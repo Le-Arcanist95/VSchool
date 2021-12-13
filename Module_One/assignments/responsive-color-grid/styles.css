@@ -35,3 +35,21 @@
     width: 25%;
     background-color: #E76E34;
 }
+
+@media only screen and (max-width: 768px) {
+    .row {
+        flex-direction: column;
+    }
+    .h-pink {
+        width: 100%;
+    }
+    .l-blue {
+        width: 100%;
+    }
+    .green {
+        width: 100%;
+    }
+    .orange {
+        width: 100%;
+    }
+}
