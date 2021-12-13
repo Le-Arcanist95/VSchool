@@ -1,0 +1,12 @@
+* {
+    box-sizing: border-box;
+}
+
+.content-box {
+    margin: auto;
+    width: 90%;
+}
+.row {
+    display: flex;
+    height: 25%;
+}
