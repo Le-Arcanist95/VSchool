@@ -10,38 +10,28 @@
     display: flex;
     flex-direction: row;
 }
-.l-pink {
+.row > div {
     display: block;
+    padding: 100px;
+    margin: 5px;
+}
+.l-pink {
     width: 100%;
     background-color: #F5C6D6;
-    padding: 100px;
-    margin: 5px;
 }
 .h-pink {
-    display: block;
     width: 25%;
     background-color: #EE2E84;
-    padding: 100px;
-    margin: 5px;
 }
 .l-blue {
-    display: block;
     width: 50%;
     background-color: #85CFD8;
-    padding: 100px;
-    margin: 5px;
 }
 .green {
-    display: block;
     width: 75%;
     background-color: #8DC63F;
-    padding: 100px;
-    margin: 5px;
 }
 .orange {
-    display: block;
     width: 25%;
     background-color: #E76E34;
-    padding: 100px;
-    margin: 5px;
 }
