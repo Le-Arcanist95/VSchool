@@ -1,0 +1,35 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.flag-container {
+    margin: 15px;
+    width: 50%;
+}
+.flag {
+    margin: 5px;
+    height: 0;
+    width: 100%;
+    border: 1px solid black;
+    box-shadow: 4px 3px rgba(0, 0, 0, 0.300);
+}
+.r1-1 {
+    padding-top: 100%;
+}
+.r2-3 {
+    padding-top: 66.66%;
+}
+.r3-5 {
+    padding-top: 60%;
+}
+.r5-8 {
+    padding-top: 62.5%;
+}
+.france {
+    background: linear-gradient(to right, #002495 33%, #FFFFFF 33% 66%, #ED2938 66%)
+}
+.germany {
+    background: linear-gradient(to bottom, #000000 33%, #DE0002 33% 66%, #FFCE00 66%);
+}
