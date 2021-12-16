@@ -36,3 +36,9 @@
 .madagascar {
     background: linear-gradient(to right, #FFFFFF 33%, transparent 33%), linear-gradient(to bottom, #FC3E32 50%, #007E39 50%);
 }
+.switzerland {
+    background: linear-gradient(to bottom, transparent 33%, #FFFFFF 33% 66%, transparent 66%), linear-gradient(to right, transparent 33%, #FFFFFF 33% 66%, transparent 66%), #FF0002;
+    background-size: 50% 50%;
+    background-position: 50%;
+    background-repeat: no-repeat;
+}
