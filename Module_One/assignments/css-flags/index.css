@@ -48,3 +48,6 @@
     background-position: 50%;
     background-repeat: no-repeat;
 }
+.gambia {
+    background: linear-gradient(to bottom, #CE1127 33%, #FFFFFF 33% 38%, #0D1D8B 38% 61%, #FFFFFF 61% 66%, #3B7827 66%)
+}
