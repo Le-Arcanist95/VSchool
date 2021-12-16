@@ -42,3 +42,9 @@
     background-position: 50%;
     background-repeat: no-repeat;
 }
+.sweden {
+    background: linear-gradient(to bottom, transparent 40%, #FECC00 40% 60%, transparent 60%), linear-gradient(to right, transparent 30%, #FECC00 25% 45%, transparent 45%), #0269A6;
+    background-size: 100%;
+    background-position: 50%;
+    background-repeat: no-repeat;
+}
