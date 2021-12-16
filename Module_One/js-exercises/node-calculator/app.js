@@ -1,21 +1,23 @@
 const readlineSync = require("readline-sync")
 
 function add(num1, num2) {
-    return num1+num2;
+    return Number(num1) + Number(num2)
 }
-console.log(add(3,5));
+function sub(num1, num2) {
+    return num1 - num2;
+}
+function mul(num1, num2) {
+    return num1 * num2;
+}
+function div(num1, num2) {
+    return num1 / num2;
+}
 
-function subtract(num1, num2) {
-    return num1-num2;
-}
-console.log(subtract(8,2));
+let num1 = readlineSync.question("Please enter your first number: ");
+let num2 = readlineSync.question("Please enter your second number: ");
+let operator = readlineSync.question("Please enter the operation to perform (add, sub, mul, div): ")
 
-function multiply(num1, num2) {
-    return num1*num2;
+switch(operator) {
+    case "add":
+        console.log(add(num1,num2))
 }
-console.log(multiply(6,5));
-
-function divide(num1, num2) {
-    return num1/num2;
-}
-console.log(divide(30,10));
