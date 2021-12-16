@@ -33,4 +33,6 @@
 .germany {
     background: linear-gradient(to bottom, #000000 33%, #DE0002 33% 66%, #FFCE00 66%);
 }
-.madagascar
+.madagascar {
+    background: linear-gradient(to right, #FFFFFF 33%, transparent 33%), linear-gradient(to bottom, #FC3E32 50%, #007E39 50%);
+}
