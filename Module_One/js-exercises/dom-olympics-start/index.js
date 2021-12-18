@@ -6,8 +6,8 @@ const creditSpan = document.createElement("span");
 const messageContainer = document.getElementById("main");
 const messages = document.querySelector(".messages");
 const message = document.getElementsByClassName("message");
-const lOrient = document.querySelectorAll(".left");
-const rOrient = document.querySelectorAll(".right");
+const leftMsgs = document.querySelectorAll(".left");
+const rightMsgs = document.querySelectorAll(".right");
 const themeSelect = document.getElementById("theme-drop-down");
 const sendButton = document.getElementById("send-button");
 const clearButton = document.getElementById("clear-button");
@@ -21,6 +21,7 @@ funButton.textContent = "Make it Fun"
 
 h3.append(nameSpan, creditSpan);
 header.append(h1, h3);
+messageContainer.append(funButton);
 
 funButton.addEventListener('click', (e) => {
     e.preventDefault();
@@ -33,8 +34,33 @@ funButton.addEventListener('click', (e) => {
 });
 clearButton.addEventListener('click', (e) => {
     e.preventDefault();
-    
+
     messages.innerHTML = "";
 })
+themeSelect.addEventListener('select', (e) => {
+    e.preventDefault();
 
-messageContainer.append(funButton);
+    switch(themeSelect.value) {
+        case "theme-one":
+            for (let i = 0; i < rightMsgs.length; i++) {
+                rightMsgs[i].style.backgroundColor = "lightblue";
+                rightMsgs[i].style.color = "black" ;
+            }
+            for (let i = 0; i < leftMsgs.length; i++) {
+                leftMsgs[i].style.backgroundColor = "burlywood";
+                leftMsgs[i].style.color = "black";
+            }
+            break;
+        case "theme-two":
+            for (let i = 0; i < rightMsgs.length; i++) {
+                rightMsgs[i].style.backgroundColor = "red";
+                rightMsgs[i].style.color = "white" ;
+            }
+            for (let i = 0; i < leftMsgs.length; i++) {
+                leftMsgs[i].style.backgroundColor = "black";
+                leftMsgs[i].style.color = "white";
+            }
+            break;
+    }
+});
+
