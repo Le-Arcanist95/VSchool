@@ -12,6 +12,7 @@ const themeSelect = document.getElementById("theme-drop-down");
 const sendButton = document.getElementById("send-button");
 const clearButton = document.getElementById("clear-button");
 const funButton = document.createElement("button");
+const inputForm = document["input-form"];
 const input = document.getElementById("input");
 
 h1.textContent = "JavaScript Made This!!";
@@ -30,6 +31,7 @@ funButton.addEventListener('click', (e) => {
         const funArr = ["Raindrops on Roses", "Whiskers on Kittens", "Bright Copper Kettles", "Warm Woolen Mittens", "Cream-Colored Ponies", "Crisp Apple Strudels", "Doorbells and Sleighbells", "Schnitzel with Noodles"];
 
         message[i].textContent = funArr[i];
+        message[i].style.background = "linear-gradient(135deg, orange , yellow, green, cyan, blue, violet)";
     }
 });
 clearButton.addEventListener('click', (e) => {
@@ -37,7 +39,7 @@ clearButton.addEventListener('click', (e) => {
 
     messages.innerHTML = "";
 })
-themeSelect.addEventListener('select', (e) => {
+themeSelect.addEventListener('click', (e) => {
     e.preventDefault();
 
     switch(themeSelect.value) {
@@ -63,4 +65,22 @@ themeSelect.addEventListener('select', (e) => {
             break;
     }
 });
+inputForm.addEventListener('submit', (e) => {
+    e.preventDefault();
 
+    let newMessage = document.createElement("div");
+
+    newMessage.textContent = input.value;
+    newMessage.classList.add("message");
+    
+    if (messages.lastElementChild == null) {
+        newMessage.classList.add("right");
+    } else if (messages.lastElementChild.getAttribute("class") == "message right") {
+        newMessage.classList.add("left");
+    } else {
+        newMessage.classList.add("right");
+    }
+
+    messages.append(newMessage);
+    input.value = "";
+})
