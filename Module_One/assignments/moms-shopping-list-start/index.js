@@ -33,7 +33,7 @@ form.addEventListener('submit', (e) => {
             editButton.textContent = "Save";
 
             itemTitle.append(editInput);
-        } else if (e.target.textContent === "Save") {
+        } else if (e.target.textContent === "Save") s{
             itemTitle.textContent = editInput.value;
             editButton.textContent = "Edit";
             editInput.remove();
