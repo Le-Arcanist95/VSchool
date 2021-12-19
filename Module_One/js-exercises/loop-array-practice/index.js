@@ -61,12 +61,12 @@ let isLightOn = false;
 
     function lightSwitch(arr) {
         for (let i = 0; i < arr.length; i++) {
-            for (let i = 0; i < arr[i]; i++) {
+            for (let i2 = 1; i2 <= arr[i]; i2++) {
                 isLightOn = !isLightOn;
             };
         };
         console.log(isLightOn)
     }
-    // lightSwitch(numArrOne)
-    // lightSwitch(numArrTwo)
-    // lightSwitch(numArrThree)
+    lightSwitch(numArrOne)
+    lightSwitch(numArrTwo)
+    lightSwitch(numArrThree)
