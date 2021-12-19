@@ -57,4 +57,16 @@ const peopleWhoWantToSeeMadMaxFuryRoad = [
 const numArrOne = [2, 5, 435, 4, 3];
 const numArrTwo = [1, 1, 1, 1, 3];
 const numArrThree = [9, 3, 4, 2];
-const isLightOn = false;
+let isLightOn = false;
+
+    function lightSwitch(arr) {
+        for (let i = 0; i < arr.length; i++) {
+            for (let i = 0; i < arr[i]; i++) {
+                isLightOn = !isLightOn;
+            };
+        };
+        console.log(isLightOn)
+    }
+    // lightSwitch(numArrOne)
+    // lightSwitch(numArrTwo)
+    // lightSwitch(numArrThree)
