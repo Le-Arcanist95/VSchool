@@ -4,7 +4,8 @@ let alphabet = "abcdefghijklmnopqrstuvwxyz";
 function forception(people, alphabet){
     let output = []
     for(i = 0; i < arguments[0].length; i++){
-        people.shift(output);
+        let name = people.shift();
+        output.push(name + ": ")
 
         for(i2 = 0; i2 < arguments[1].length; i++){
             let upperCase = alphabet.toUpperCase();
