@@ -40,28 +40,33 @@ const peopleWhoWantToSeeMadMaxFuryRoad = [
         let age = peopleWhoWantToSeeMadMaxFuryRoad[i].age;
         let gender = peopleWhoWantToSeeMadMaxFuryRoad[i].gender;
 
-        switch(age, gender) {
-            case age >= 18:
-            case gender === "male":
-                console.log(name + " is old enough. He's good to see Mad Max Fury Road.");
-                break;
-            case age < 18:
-            case gender === "male":
-                console.log(name + " is not old enough to see Mad Max Fury Road. Don't let him in.");
-                break;
-            case age >= 18:
-            case gender === "female":
-                console.log(name + " is old enough. She's good to see Mad Max Fury Road.");
-                break;
-            case age < 18:
-            case gender === "female":
-                console.log(name + " is not old enough to see Mad Max Fury Road. Don't let her in.");
-                break;
-
+        if (age >= 18 && gender === "male") {
+            console.log(name + " is old enough. He's good to see Mad Max Fury Road.");
+        }
+        if (age < 18 && gender === "male") {
+            console.log(name + " is not old enough to see Mad Max Fury Road. Don't let him in.");
+        }    
+        if (age >= 18 && gender === "female") {
+            console.log(name + " is old enough. She's good to see Mad Max Fury Road.");
+        }
+        if( age < 18 && gender === "female") {
+            console.log(name + " is not old enough to see Mad Max Fury Road. Don't let her in.");
         }
     }
 
 const numArrOne = [2, 5, 435, 4, 3];
 const numArrTwo = [1, 1, 1, 1, 3];
 const numArrThree = [9, 3, 4, 2];
-const isLightOn = false;
+let isLightOn = false;
+
+    function lightSwitch(arr) {
+        for (let i = 0; i < arr.length; i++) {
+            for (let i = 0; i < arr[i]; i++) {
+                isLightOn = !isLightOn;
+            };
+        };
+        console.log(isLightOn)
+    }
+    // lightSwitch(numArrOne)
+    // lightSwitch(numArrTwo)
+    // lightSwitch(numArrThree)
