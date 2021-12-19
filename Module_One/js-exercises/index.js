@@ -40,24 +40,17 @@ const peopleWhoWantToSeeMadMaxFuryRoad = [
         let age = peopleWhoWantToSeeMadMaxFuryRoad[i].age;
         let gender = peopleWhoWantToSeeMadMaxFuryRoad[i].gender;
 
-        switch(age, gender) {
-            case age >= 18:
-            case gender === "male":
-                console.log(name + " is old enough. He's good to see Mad Max Fury Road.");
-                break;
-            case age < 18:
-            case gender === "male":
-                console.log(name + " is not old enough to see Mad Max Fury Road. Don't let him in.");
-                break;
-            case age >= 18:
-            case gender === "female":
-                console.log(name + " is old enough. She's good to see Mad Max Fury Road.");
-                break;
-            case age < 18:
-            case gender === "female":
-                console.log(name + " is not old enough to see Mad Max Fury Road. Don't let her in.");
-                break;
-
+        if (age >= 18 && gender === "male") {
+            console.log(name + " is old enough. He's good to see Mad Max Fury Road.");
+        }
+        if (age < 18 && gender === "male") {
+            console.log(name + " is not old enough to see Mad Max Fury Road. Don't let him in.");
+        }    
+        if (age >= 18 && gender === "female") {
+            console.log(name + " is old enough. She's good to see Mad Max Fury Road.");
+        }
+        if( age < 18 && gender === "female") {
+            console.log(name + " is not old enough to see Mad Max Fury Road. Don't let her in.");
         }
     }
 
