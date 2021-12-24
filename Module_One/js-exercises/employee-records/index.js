@@ -16,6 +16,8 @@ Employee.prototype.printEmployeeForm = () => {
     );
 };
 
-const firstEmployee = employees.push(new Employee("", "", "", ""));
-const secondEmployee = employees.push(new Employee("", "", "", ""));
-const thirdEmployee = employees.push(new Employee("", "", "", ""));
+const firstEmployee = employees.push(new Employee("Frank", "Lead Developer", "$160,000"));
+const secondEmployee = employees.push(new Employee("Terry", "Consultant", "$120/hr", "Contract"));
+const thirdEmployee = employees.push(new Employee("Owen", "Intern", "$25/hr", "Part Time"));
+
+console.log(employees)
