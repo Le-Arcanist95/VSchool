@@ -5,22 +5,27 @@ const countArrObj = {
 }
 
 for(let i = 0; i < 100;) {
-    let value = i;
+    let value = '';
 
     value = ((++i%3 ? '' : "fizz") + (i%5 ? '' : "buzz"));
 
-    if (value === "fizzbuzz") {
-        countArrObj.fizzbuzz++;
-        console.log(value);
-    } else if (value === "fizz") {
-        countArrObj.fizz++;
-        console.log(value);
-    } else if (value === "buzz") {
-        countArrObj.buzz++;
-        console.log(value);
-    } else {
-        console.log(i)
-    };
+    switch(value) {
+        case "fizzbuzz":
+            countArrObj.fizzbuzz++;
+            console.log(value);
+            break;
+        case "fizz":
+            countArrObj.fizz++;
+            console.log(value);
+            break;
+        case "buzz":
+            countArrObj.buzz++;
+            console.log(value);
+            break;
+        default:
+            value = i
+            console.log(value);
+    }
 };
 
 console.log(countArrObj);
