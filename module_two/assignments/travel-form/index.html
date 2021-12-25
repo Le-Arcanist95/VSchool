@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form name="travelForm" id="travel-form">
+        First Name: <input type="text" name="firstName">
+        <br>
+        Last Name: <input type="text" name="lastName">
+        <br>
+        Age: <input type="digit" name="age">
+        <br>
+        <input type="radio" name="gender" value="male" id="male">
+        <label for="male">Male</label>
+        <br>
+        <input type="radio" name="gender" value="female" id="female">
+        <label for="female">Female</label>
+        <br>
+        Where are you going? <select name="travelLocation">
+            <option value="north pole">North Pole</option>
+            <option value="south pole">South Pole</option>
+            <option value="equator">Equator (Destination will be random.)</option>
+        </select>
+        <br>
+        Dietary Restrictions (Select all that apply):
+        <br>
+        <input class="diet" type="checkbox" name="diabetic" value="diabetic">
+        <label for="diabetic">Diabeties</label>
+        <br>
+        <input class="diet" type="checkbox" name="gluten" value="gluten-free">
+        <label for="gluten">Celiac Disease</label>
+        <br>
+        <input class="diet" type="checkbox" name="peanut" value="peanut allergy">
+        <label for="peanut">Peanut Allergy</label>
+        <br>
+        <button type="button" id="submit">Submit</button>
+    </form>
+
+    <script src="index.js"></script>
+</body>
+</html>
