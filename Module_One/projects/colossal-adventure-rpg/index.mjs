@@ -96,7 +96,7 @@ while(isAlive) {
         const random = Math.random();
         if(random < 0.20){
             enemyEncounter();
-        } else if (random < 0.22) {
+        } else if (random < 0.22 && !player.hasArtifact) {
             console.log('\nAs you are walking through the forest, you come across a clearing. In the middle of the clearing you find a box. As you approach the box a voice speaks into your mind saying, "Take this artifact from its home and know despair, but harness the power of the Gods!". You open the box finding an amulet which you are overwhelmingly compelled to pick up and wear.', '\n\nAs you place it around your neck, power floods into you and the voice begins to whisper incessantly within your mind.')
             player.hasArtifact = true;
         } else {
