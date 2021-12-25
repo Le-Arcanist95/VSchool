@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple HTML Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header id="header-container">
+        <h1 id="header">Simple HTML Calculator</h1>
+    </header>
+    <main class="calc-box">
+        <div id="addition" class="calc-function">
+            <form name="addForm">
+                <input type="number" name="addNum1" class="func-input" placeholder="ex. 123">
+                <input type="number" name="addNum2" class="func-input" placeholder="ex. 123">
+                <button type="submit" class="func-button" id="addSubmit">[ + ]</button>
+            </form>
+            <h3 class="result" id="addResult"> = ?</h3>
+        </div>
+        <div id="subtraction" class="calc-function">
+            <form name="subForm">
+                <input type="number" name="subNum1" class="func-input" placeholder="ex. 123">
+                <input type="number" name="subNum2" class="func-input" placeholder="ex. 123">
+                <button type="submit" class="func-button" id="subSubmit">[ - ]</button>
+            </form>
+            <h3 class="result" id="subResult"> = ?</h3>
+        </div>
+        <div id="multiplication" class="calc-function">
+            <form name="mulForm">
+                <input type="number" name="mulNum1" class="func-input" placeholder="ex. 123">
+                <input type="number" name="mulNum2" class="func-input" placeholder="ex. 123">
+                <button type="submit" class="func-button" id="mulSubmit">[ * ]</button>
+            </form>
+            <h3 class="result" id="mulResult"> = ?</h3>
+        </div>
+    </main>
+    
+    <script src="index.js"></script>
+</body>
+</html>
