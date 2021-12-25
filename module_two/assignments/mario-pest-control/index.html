@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mario Pest Control</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <img class="header-img1" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/88168051-ac5d-4131-8981-bfadfe509221/db10lgx-72baed61-aa3f-47ef-b3e0-d36ce3563b8d.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvODgxNjgwNTEtYWM1ZC00MTMxLTg5ODEtYmZhZGZlNTA5MjIxXC9kYjEwbGd4LTcyYmFlZDYxLWFhM2YtNDdlZi1iM2UwLWQzNmNlMzU2M2I4ZC5wbmcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.K5nbwE3L5Y617lB9NX0SbtEP7oVAhl9uTeBMlVbSXYw">
+        <h1 class="headline">Mario Pest Control</h1>
+        <p>Personal pest tracker. Input any new captures below. Submitting them will update the capture tracker and overall pricing to bill your customer. Please bear with us as we continue adding more enemy-types, but for now we have the three most common ones that you might encounter.</p>
+        <img class="header-img2" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/88168051-ac5d-4131-8981-bfadfe509221/db10lgx-72baed61-aa3f-47ef-b3e0-d36ce3563b8d.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvODgxNjgwNTEtYWM1ZC00MTMxLTg5ODEtYmZhZGZlNTA5MjIxXC9kYjEwbGd4LTcyYmFlZDYxLWFhM2YtNDdlZi1iM2UwLWQzNmNlMzU2M2I4ZC5wbmcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.K5nbwE3L5Y617lB9NX0SbtEP7oVAhl9uTeBMlVbSXYw">
+    </header>
+    <hr>
+    <main>
+        <div class="list-container">
+            <h3 class="headline">Pest List</h3>
+            <form name="pestTracker">
+                <ul id="pests">
+                    <li id="goomba">
+                        <img class="pest-img" src="https://icons.iconarchive.com/icons/ph03nyx/super-mario/256/Goomba-icon.png">
+                        <h5 class="pest-name headline">Goombas</h5>
+                        <p class="price-marker">Value: 5 Coins</p>
+                            <input type="number" name="goombaInput" placeholder="ex. 1, 2, 3">
+                    </li>
+                    <li id="bob-omb">
+                        <img class="pest-img" src="https://screenshots.gamebanana.com/img/ico/sprays/bob_omb.png">
+                        <h5 class="pest-name headline">Bob-ombs</h5>
+                        <p class="price-marker">Value: 7 Coins</p>
+                            <input type="number" name="bombInput" placeholder="ex. 1, 2, 3">
+                    </li>
+                    <li id="cheep-cheep">
+                        <img class="pest-img" src="https://vignette.wikia.nocookie.net/luigi-mansionfanon/images/2/20/Cheep-Cheep.png/revision/latest?cb=20120708123141">
+                        <h5 class="pest-name headline">Cheep-cheeps</h5>
+                        <p class="price-marker">Value: 11 Coins</p>
+                            <input type="number" name="cheepInput" placeholder="ex. 1, 2, 3">
+                    </li>
+                </ul>
+                <button id="submit" class="button" type="submit">Submit</button>
+            </form>
+                
+        </div>
+        <hr>
+        <div class="tracking-container">
+            <h3 class="headline">Overall Caught & Pricing</h3>
+            <div class="pest-ranking">
+                <div class="row">
+                    <span class="name">Goombas: </span><span id="goombaCount">0</span>
+                </div>
+                <div class="row">
+                    <span class="name">Bob-ombs: </span><span id="bombCount">0</span>
+                </div>
+                <div class="row">
+                    <span class="name">Cheep-cheeps: </span><span id="cheepCount">0</span>
+                </div>
+            </div>
+            <div class="pricing">
+                <span>Total Cost = </span><span id="bill"></span>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>Contact: <a href="Mario@noa.nintendo.com">Mario@noa.nintendo.com</a></p>
+        <p>Website: <a href="https://mario.nintendo.com">https://mario.nintendo.com</a></p>
+        <p>Physical Address: Mario Bros.' House, Mushroom Kingdom, Randomized 12345</p>
+        <script src="index.js"></script>
+    </footer>
+</body>
+</html>
