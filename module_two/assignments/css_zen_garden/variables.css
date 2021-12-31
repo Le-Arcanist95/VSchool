@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Julius+Sans+One&family=Libre+Baskerville:ital@0;1&display=swap');
+@font-face {
+    font-family: "Verde Moderna";
+    src: url("resources/verdemoderna.woff") format('woff');
+}
+
+:root {
+    --text-libre: 'Libre Baskerville', sans-serif;
+    --text-julius: 'Julius Sans One', sans-serif;
+}
+.arrow {
+    height: 24px;
+    width: 24px;
+    border: solid rgba(255, 255, 255, 0.7);
+    border-width: 0 4px 4px 0;
+    display: inline-block;
+    padding: 3px;
+}
+.right {
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+}

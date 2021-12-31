@@ -1,0 +1,62 @@
+{
+    "appetizers": [
+        {
+            "name": "Chips n' Dip",
+            "ingredients": ["Fried Tortilla Chips", "Spicy Cilantro-Lime Dip"],
+            "description": "Fried Tortilla Chips with our signature 'metaphorical' kick in the teeth. Each bite will surely make you smile bigger than the last!"
+        },
+        {
+            "name": "Meaty Cheese Rollups",
+            "ingredients": ["Salami", "Ham", "Turkey", "White Cheddar", "Havarti", "Gouda"],
+            "description": "A variety of meats and cheeses rolled up to look cute 4 u."
+        }
+    ],
+    "cold sandwhiches": [
+        {
+            "name": "Thanksgiving Dinner",
+            "ingredients": ["Turkey", "Ham", "Cranberry Sauce", "Hoagie Bun"],
+            "description": "Just like mama made it... Bland! (And out of the can)"
+        },
+        {
+            "name": "Just Cheese",
+            "ingredients": ["All Cheeses","White Bread"],
+            "description": "The Ungrilled Cheese - For your everyday cheese lover"
+        }
+    ],
+    "hot sandwhiches": [
+        {
+            "name": "Tuna Melt",
+            "ingredients": ["Chonkey Tuna", "Swiss Cheese", "Toasted Wheat"],
+            "description": "Canned Tuna and storebought cheese. Worth the $10 we charge for it."
+        },
+        {
+            "name": "Fat-Boy Reuben",
+            "ingredients": ["Corned Beef", "Shredded Turkey", "Sauerkraut","Russian Dressing", "Sourdough"],
+            "description": "Double Meat portions? Dressing from the russian mob down the street? We got you."
+        }
+    ],
+    "desserts": [
+        {
+            "name": "A Lie",
+            "ingredients": ["Rainbows", "Unicorns", "Glitter"],
+            "description": "Perfectly sized slice of cake for any occasion."
+        },
+        {
+            "name": "The Cheesecake",
+            "ingredients": ["Cheddar?", "Swiss?", "Gouda?"],
+            "description": "A slice of the cheese wheel."
+        }
+    ],
+    "drinks": [
+        {
+            "name": "Hard Lemonade",
+            "ingredients": ["Vodka", "Lemons", "Sugar"],
+            "description": "Because you need to be drunk to eat here."
+        },
+        {
+            "name": "I Don't Know",
+            "ingredients": ["I", "Don't", "Know"],
+            "description": "A mix of various juices that I can find in the fridge."
+        }
+    ]
+}
