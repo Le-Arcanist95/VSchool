@@ -11,20 +11,15 @@ function Card(props) {
 
     switch(props.location.timeToGo) {
         case "Spring":
-            styles.backgroundColor = "#99FF33"
-            break;
+            return styles.backgroundColor = "#99FF33"
         case "Summer":
-            styles.backgroundColor = "#FFFF33"
-            break;
+            return styles.backgroundColor = "#FFFF33"
         case "Fall":
-            styles.backgroundColor = "#FF9933"
-            break;
+            return styles.backgroundColor = "#FF9933"
         case "Winter":
-            styles.backgroundColor = "#33FFFF"
-            break;
+            return styles.backgroundColor = "#33FFFF"
         default:
             styles.backgroundColor = "#FFFFFF"
-            break;
     };
     if (props.location.price >= 1000) {
         priceElement = "$$$";
