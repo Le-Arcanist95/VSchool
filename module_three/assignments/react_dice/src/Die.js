@@ -40,14 +40,10 @@ function Die(props) {
                 justifyContent: "space-between"
             };
             tertiaryStyling = {
-                display: "block",
-                width: 25,
-                height: 25,
-                borderRadius: "50%",
-                backgroundColor: "#660000",
                 alignSelf: "flex-end"
             };
             Object.assign(dieStyling, secondaryStyling);
+            Object.assign(tertiaryStyling, dotStyling);
             return (
                 <div style={dieStyling}>
                     <span style={dotStyling}></span>
@@ -60,22 +56,14 @@ function Die(props) {
                 justifyContent: "space-between"
             };
             tertiaryStyling = {
-                display: "block",
-                width: 25,
-                height: 25,
-                borderRadius: "50%",
-                backgroundColor: "#660000",
                 alignSelf: "center"
             };
             quaternaryStyling = {
-                display: "block",
-                width: 25,
-                height: 25,
-                borderRadius: "50%",
-                backgroundColor: "#660000",
                 alignSelf: "flex-end"
             };
             Object.assign(dieStyling, secondaryStyling);
+            Object.assign(tertiaryStyling, dotStyling);
+            Object.assign(quaternaryStyling, dotStyling);
             return (
                 <div style={dieStyling}>
                     <span style={dotStyling}></span>
