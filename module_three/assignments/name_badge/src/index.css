@@ -2,11 +2,15 @@
     margin: 0;
     padding: 0;
 }
-
+body {
+    width: 50%;
+    margin: auto;
+}
+/* CSS Styling for Form Component */
 .form--container {
     display: grid;
     margin: 15px;
-    padding: 40px 60px;
+    padding: 30px 60px;
     border: 2px solid black;
     border-radius: 5px;
     grid-template-columns: repeat(2, 1fr);
@@ -22,10 +26,41 @@
 .form--container textarea {
     grid-column: 1 / 3;
     margin: 10px;
+    resize: none;
 }
 .form--container button {
     grid-column: 1 / 3;
-    width: 5%;
-    margin: 10px 0 0 47.5%;
+    width: 10%;
+    margin: 10px 0 0 45%;
     padding: 5px 0;
+}
+
+/* CSS Styling for Badge Component */
+.badge--bar {
+    background-color: slategrey;
+    border: 2px solid black;
+    border-radius: 10px 10px 0 0;
+    text-indent: 10px;
+    margin: 0 15px;
+}
+.info--container {
+    border: 2px solid black;
+    border-radius: 0 0 10px 10px;
+    margin: 0 15px 15px 15px;
+    padding: 20px 60px;
+}
+.info--container textarea {
+    resize: none;
+    margin: 10px;
+    padding: 3px;
+    width: 100%;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+.p--grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+.p--grid p{
+    margin: 5px 0 15px 10px
 }

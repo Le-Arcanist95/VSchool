@@ -6,16 +6,18 @@ function Badge(props) {
             <h1 className="badge--bar">Badge: </h1>
             <div className="info--container">
                 <div className="p--grid">
-                    <p>Name: {props.info.firstName} {props.info.lastName}</p>
-                    <p>Phone: {props.info.phoneNum}</p>
-                    <p>Place of Birth: {props.info.placeOfBirth}</p>
-                    <p>Favorite Food: {props.info.favFood}</p>
-                    <p>Email: {props.info.email}</p>
+                    <p><b>Name:</b> {props.info.firstName} {props.info.lastName}</p>
+                    <p><b>Phone:</b> {props.info.phoneNum}</p>
+                    <p><b>Place of Birth:</b> {props.info.placeOfBirth}</p>
+                    <p><b>Favorite Food:</b> {props.info.favFood}</p>
+                    <p><b>Email:</b> {props.info.email}</p>
                 </div>
-                
+                <textarea>
+                    {props.info.textAreaContent}
+                </textarea>
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default Badge;
