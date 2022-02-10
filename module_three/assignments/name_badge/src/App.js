@@ -44,9 +44,9 @@ function App() {
             };
         });
         setBadgeData(prevBadgeData => {
-            let data = prevBadgeData;
-            data.push(formData);
-            return (data)
+            let newData = prevBadgeData;
+            newData.push(formData);
+            return (newData)
         });
     };
 
