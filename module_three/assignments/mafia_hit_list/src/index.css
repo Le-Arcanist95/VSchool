@@ -1,0 +1,60 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Background */
+.app--container {
+    background-image: url("https://hdwallsource.com/img/2014/3/cool-textured-backgrounds-18617-19087-hd-wallpapers.jpg");
+}
+
+/* Header Component */
+.header {
+    display: flex;
+    background-color: rgb(30, 30, 30);
+    margin-bottom: 32px;
+}
+.header--image {
+    height: 100px;
+    width: 75px;
+    margin: 0 64px;
+}
+.image--flip {
+    transform: scaleX(-1);
+}
+.header h1 {
+    align-self: center;
+    margin: auto;
+    word-spacing: 3px;
+    color: crimson;
+    font-weight: 100;
+    font-style: italic;
+}
+
+/* Main Content */
+.list--grid {
+    display: grid;
+    width: 65%;
+    margin: 64px auto;
+    grid-template-columns: repeat(3, 1fr);
+}
+.mark--container {
+    height: 400px;
+    width: 300px;
+    margin: 32px
+}
+.mark--image {
+    float: left;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+.mark--container .name--overlay {
+    padding: 10px;
+    font-weight:100;
+    text-align: center;
+    font-size: 30px;
+    color: aliceblue;
+    background-color: rgba(0, 255, 255, 0.397);
+}

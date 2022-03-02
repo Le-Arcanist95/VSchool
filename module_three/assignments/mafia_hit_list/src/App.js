@@ -14,13 +14,15 @@ export default function App() {
 
         acquireTargets();
     }, []);
-    
+
     const targets = hitList.map(x => <Mark key={x.name} info={x}/>);
 
     return (
-        <div>
+        <div className="app--container">
             <Header />
-            {targets}
+            <div className="list--grid">
+                {targets}
+            </div>
         </div>
     );
 };

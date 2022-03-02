@@ -9,7 +9,7 @@ export default function Mark(props) {
 
     return (
         <div className="mark--container" onClick={handleConfirm}>
-            <img className="background--img" alt="" src={props.info.image}/>
+            <img className="mark--image" alt="" src={props.info.image}/>
             <div className="name--overlay">
                 {props.info.name}
             </div>
