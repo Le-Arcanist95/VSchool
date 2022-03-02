@@ -62,6 +62,7 @@ function App() {
 
     let badgeList = badgeData.map(badge => <Badge key={badge.id} info={badge}/>);
 
+
     return (
         <div>
             <form className="form--container" onSubmit={handleSubmit}>
@@ -100,7 +101,7 @@ function App() {
                 <input 
                     type="tel"
                     placeholder="123-456-7890"
-                    pattern=""
+                    // pattern=""
                     onChange={handleChange}
                     name="phoneNum"
                     value={formData.phoneNum}

@@ -12,9 +12,9 @@ function Badge(props) {
                     <p><b>Favorite Food:</b> {props.info.favFood}</p>
                     <p><b>Email:</b> {props.info.email}</p>
                 </div>
-                <textarea>
+                <p>
                     {props.info.textAreaContent}
-                </textarea>
+                </p>
             </div>
         </div>
     );
