@@ -1,22 +1,20 @@
 import React, { useContext } from "react";
+import Select from "react-select";
 import { ThemeContext } from "../themeContext";
 
 function Main() {
-    const { themeColor, handleChange } = useContext(ThemeContext);
+    const { themeColor, themes, handleChange } = useContext(ThemeContext);
 
     return (
         <Main className={`main ${themeColor}-theme`}>
+            <div className={`decoration ${themeColor}-theme`}></div>
             <label> Choose a theme: 
-                <select 
-                    className={`selectInput ${themeColor}-theme`} 
+                <Select 
+                    className={`selectInput ${themeColor}-theme`}
+                    options={themes}
                     onChange={handleChange}
                     value={themeColor}
-                >
-                    <option value="light"> Light Theme </option>
-                    <option value="dark"> Dark Theme </option>
-                    <option value="seafoam"> Seafoam Theme</option>
-                    <option value="maroon"> Maroon Theme </option>
-                </select>
+                />
             </label>
         </Main>
     );
