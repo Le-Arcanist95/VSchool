@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { ThemeContext } from "../themeContext";
 import NavBar from "./NavBar";
 
-export default function Header(props) {
+function Header(props) {
     const { themeColor } = useContext(ThemeContext);
     return (
         <header className={`${ themeColor }-theme`}>
@@ -11,3 +11,5 @@ export default function Header(props) {
         </header>
     );
 };
+
+export default Header;

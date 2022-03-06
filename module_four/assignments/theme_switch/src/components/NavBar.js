@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { ThemeContext } from "../themeContext";
 
-export default function NavBar(props) {
+function NavBar(props) {
     const { themeColor } = useContext(ThemeContext);
 
     return (
@@ -14,3 +14,5 @@ export default function NavBar(props) {
         </navbar>
     );
 };
+
+export default NavBar;
