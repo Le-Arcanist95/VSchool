@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
 import { ThemeContext } from "../themeContext";
 
-function NavBar(props) {
+function NavBar() {
     const { themeColor } = useContext(ThemeContext);
 
     return (
-        <navbar className={`${ themeColor }-theme`}>
+        <navbar className={`${themeColor}-theme`}>
             <ul>
                 <li> Home </li>
                 <li> About </li>

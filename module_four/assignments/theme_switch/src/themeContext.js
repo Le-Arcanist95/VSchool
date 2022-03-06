@@ -5,12 +5,12 @@ const ThemeContext = React.createContext();
 function ThemeContextProvider(props) {
     const [ themeColor, setThemeColor ] = useState("light");
 
-    function toggleTheme() {
-        setThemeColor(prevTheme => prevTheme === "light" ? "dark" : "light");
+    function handleChange(event) {
+        setThemeColor(event.target.value);
     };
 
     return (
-        <ThemeContext.Provider value={{ themeColor, toggleTheme }}>
+        <ThemeContext.Provider value={{ themeColor, handleChange }}>
             {props.children}
         </ThemeContext.Provider>
     );
