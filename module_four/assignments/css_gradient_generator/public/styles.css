@@ -1,0 +1,97 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: linear-gradient(320deg, #3eeabe, #a61ef1, #24db23, #2d6fb0);
+    background-size: 1000% 1000%;
+
+    -webkit-animation: AnimationName 22s ease infinite;
+    -moz-animation: AnimationName 22s ease infinite;
+    animation: AnimationName 22s ease infinite;
+}
+.header {
+    text-align: center;
+    margin-bottom: 50px;
+    padding: 15px;
+    box-shadow: 0 0 5px;
+    background: linear-gradient(320deg, #3eeabe, #a61ef1, #24db23, #2d6fb0);
+    background-size: 800% 800%;
+
+    -webkit-animation: AnimationName 22s ease infinite;
+    -moz-animation: AnimationName 22s ease infinite;
+    animation: AnimationName 22s ease infinite;
+}
+
+@-webkit-keyframes AnimationName {
+    0%{background-position:0% 9%}
+    50%{background-position:100% 92%}
+    100%{background-position:0% 9%}
+}
+@-moz-keyframes AnimationName {
+    0%{background-position:0% 9%}
+    50%{background-position:100% 92%}
+    100%{background-position:0% 9%}
+}
+@keyframes AnimationName {
+    0%{background-position:0% 9%}
+    50%{background-position:100% 92%}
+    100%{background-position:0% 9%}
+}
+.generator {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin: auto;
+    border: 2px solid black;
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px;
+    width: 70%;
+    background-color: white;
+}
+.display {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    padding: 10px;
+    box-shadow: 1px 1px 1px 1px;
+}
+.display-gradient {
+    border: 1px solid black;
+    margin: 5px;
+    align-self: center;
+}
+.display-code {
+    text-align: left;
+    padding: 12px;
+    margin: 10px;
+    height: 100px;
+    width: 97%;
+    resize: none;
+    background-color: #2d6fb0;
+    border-radius: 7.5px;
+    color: whitesmoke;
+}
+.controls {
+    margin: 10px;
+    padding: 10px;
+    box-shadow: 1px 1px 1px 1px;   
+}
+.controls-header {
+    text-align: center;
+}
+.colors-list {
+    list-style: none;
+    margin: 15px;
+}
+.angle-input {
+    margin: 0 5px 0 15px;
+}
+.controls-add {
+    margin-left: 400px;
+}
+.colors-item {
+    display: flex;
+    justify-content: space-between;
+}
