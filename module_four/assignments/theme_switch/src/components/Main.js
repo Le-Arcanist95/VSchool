@@ -6,16 +6,17 @@ function Main() {
     const { themeColor, themes, handleChange } = useContext(ThemeContext);
 
     return (
-        <main className={`main ${themeColor}-theme`}>
-            <div className={`decoration ${themeColor}-theme`}></div>
-            <label> Choose a theme: 
-                <Select 
-                    className={`selectInput ${themeColor}-theme`}
-                    options={themes}
-                    onChange={handleChange}
-                    value={themeColor}
-                />
-            </label>
+        <main className={`${themeColor}-theme`}>
+            <div className={`content ${themeColor}-theme`}>
+                <label> Choose a theme: 
+                    <Select 
+                        className={`selectInput ${themeColor}-theme`}
+                        options={themes}
+                        onChange={handleChange}
+                        value={themeColor}
+                    />
+                </label>
+            </div>
         </main>
     );
 };

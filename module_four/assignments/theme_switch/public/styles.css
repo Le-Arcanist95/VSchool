@@ -3,15 +3,84 @@
     margin: 0;
     padding: 0;
 }
+html, body {
+    height: 100%
+}
+body {
+    margin-top: -10px;
+}
 
 /* General Styling */
-
+header {
+    border-bottom: 1px solid black;
+    margin: 0;
+}
+header h1 {
+    margin: 10px;
+    text-align: center;
+}
+nav ul {
+    display: flex;
+    list-style: none;
+    justify-content: space-between;
+    width: 75%;
+    margin: auto;
+    margin-bottom: 5px;
+    padding: 10px;
+}
+nav ul li {
+    border: 2px solid black;
+    padding: 10px;
+    width: 100px;
+    text-align: center;
+    box-shadow: 0 0 10px;
+}
+main {
+    height: 100vh;
+}
+.content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    box-shadow: inset 0 0 10px;
+}
+footer h4 {
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+}
 
 /* Light Theme */
-
-
+.light-theme {
+    background-color: white;
+}
+header.light-theme {
+    background-color: aquamarine;
+}
+nav.light-theme {
+    background-color: aquamarine;
+}
+nav.light-theme ul li {
+    background-color: white;
+}
+main.light-theme {
+    background-color: lightgrey;
+}
 /* Dark Theme */
-
+.dark-theme {
+    background-color: black;
+    color: white;
+}
+main.dark-theme {
+    background-color: darkslategray;
+}
 
 /* Seafoam Theme */
 
