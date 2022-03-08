@@ -4,12 +4,12 @@ import Color from "./ColorItem";
 
 function Controls(props) {
     const { angle, colors } = props.attributes;
-    const { addColor, removeColor, handleColorChange, handleAngleChange } = props.functions;
-
+    const { addColor, handleColorChange, handleAngleChange } = props.functions;
+    
     const activeColors = Object.values(colors).map((hex, index) => {
         const keyValues = Object.keys(colors);
         const currentKey = keyValues[index];
-        return <Color key={currentKey} attributes={{hex, currentKey, index}} functions={{handleColorChange, removeColor}}/>
+        return <Color key={currentKey} attributes={{hex, currentKey, index}} functions={handleColorChange}/>
     })
 
     return (

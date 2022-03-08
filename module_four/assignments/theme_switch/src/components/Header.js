@@ -6,7 +6,7 @@ function Header() {
     const { themeColor } = useContext(ThemeContext);
     return (
         <header className={`${themeColor}-theme`}>
-            <h1> The {themeColor.charAt(0).toUpperCase() + themeColor.split(1)} Side </h1>
+            <h1> The {themeColor.charAt(0).toUpperCase() + themeColor.slice(1)} Side </h1>
             <NavBar />
         </header>
     );

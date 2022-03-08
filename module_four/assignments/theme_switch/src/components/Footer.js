@@ -5,9 +5,9 @@ function Footer() {
     const { themeColor } = useContext(ThemeContext);
 
     return (
-        <Footer className={`${themeColor === "light" ? "dark" : "light"}-theme`}>
+        <footer className={`${themeColor === "light" ? "dark" : "light"}-theme`}>
             <h4>Hi there, I'm contrast!</h4>
-        </Footer>
+        </footer>
     )
 };
 export default Footer;

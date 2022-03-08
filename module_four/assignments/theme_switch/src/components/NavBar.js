@@ -5,13 +5,13 @@ function NavBar() {
     const { themeColor } = useContext(ThemeContext);
 
     return (
-        <navbar className={`${themeColor}-theme`}>
+        <nav className={`${themeColor}-theme`}>
             <ul>
                 <li> Home </li>
                 <li> About </li>
                 <li> Contact </li>
             </ul>
-        </navbar>
+        </nav>
     );
 };
 

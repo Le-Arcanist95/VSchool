@@ -11,8 +11,8 @@ function ThemeContextProvider(props) {
         {value: "maroon", label: "Maroon Theme"}
     ]
 
-    function handleChange(newVal) {
-        setThemeColor(newVal);
+    function handleChange(e) {
+        setThemeColor(e.value);
     };
 
     return (
