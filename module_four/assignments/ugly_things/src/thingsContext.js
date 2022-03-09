@@ -14,16 +14,16 @@ function ThingsContextProvider(props) {
         };
     
         getThings();
-      }, [uglyThingsArr]);
+      }, []);
     
     function handleSubmit(e) {
-
+        return
     }
     function handleEdit(e) {
-
+        return
     }
     function handleDelete(e) {
-
+        return
     }
 
     return (
