@@ -4,30 +4,53 @@ const ThingsContext = createContext()
 
 function ThingsContextProvider(props) {
     const [uglyThingsArr, setUglyThingsArr] = useState([]);
+    const [formData, setFormData] = useState({
+        title: "",
+        description: "",
+        imgUrl: ""
+    })
 
     useEffect(() => {
-        const getThings = async () => {
-          const res = await fetch("https://api.vschool.io/levi-arcane/thing");
-          const jsonData = await res.json();
-          console.log(jsonData);
-          setUglyThingsArr(jsonData);
-        };
-    
-        getThings();
-      }, []);
-    
+        fetch("https://api.vschool.io/levi-arcane/thing")
+            .then(res => res.json())
+            .then(data => setUglyThingsArr(data))
+    }, [])
+
+    function handleChange(e) {
+        const { name, value } = e.target;
+
+        setFormData(prevValues => ({
+            ...prevValues,
+            [name]: value
+        }))
+    }
     function handleSubmit(e) {
-        return
+        e.preventDefault();
+
+        fetch("https://api.vschool.io/levi-arcane/thing", {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData),
+          })
+            .then(res => res.json())
+            .then(data => setUglyThingsArr(prevArr => {
+                return [
+                    ...prevArr,
+                    data
+                ]
+            }))
     }
-    function handleEdit(e) {
-        return
+    function handleEdit(id) {
+        console.log(id)
     }
-    function handleDelete(e) {
-        return
+    function handleDelete(id) {
+        console.log(id)
     }
 
     return (
-        <ThingsContext.Provider value={{ uglyThingsArr, handleSubmit, handleEdit, handleDelete }}>
+        <ThingsContext.Provider value={{ uglyThingsArr, formData, handleChange, handleSubmit, handleEdit, handleDelete }}>
             {props.children}
         </ThingsContext.Provider>
     )

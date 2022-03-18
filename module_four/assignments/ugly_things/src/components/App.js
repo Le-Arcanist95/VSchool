@@ -7,7 +7,7 @@ import UglyThing from "./UglyThing";
 
 function App() {
     const { uglyThingsArr } = useContext(ThingsContext);
-    const uglyThingList = uglyThingsArr.map(thing => <UglyThing key={thing.id} attributes={thing}/>)
+    const uglyThingList = uglyThingsArr.map(thing => <UglyThing key={thing._id} attributes={thing}/>)
 
     return (
         <>
