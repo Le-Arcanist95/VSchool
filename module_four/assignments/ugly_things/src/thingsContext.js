@@ -7,7 +7,7 @@ function ThingsContextProvider(props) {
     const [formData, setFormData] = useState({
         title: "",
         description: "",
-        imgUrl: ""
+        imgUrl: "https://www.leadershipmartialartsct.com/wp-content/uploads/2017/04/default-image.jpg"
     })
 
     useEffect(() => {
@@ -56,7 +56,7 @@ function ThingsContextProvider(props) {
     function handleDelete(id) {
         fetch(`https://api.vschool.io/levi-arcane/thing/${id}`, {method: "DELETE"})
             .then(res => res.json())
-            .then(response => setUglyThingsArr(prevArr => prevArr.filter(uglyThing => uglyThing._id !== response._id)))
+            .then(response => setUglyThingsArr(prevArr => prevArr.filter(uglyThing => uglyThing._id !== id)))
     }
 
     return (

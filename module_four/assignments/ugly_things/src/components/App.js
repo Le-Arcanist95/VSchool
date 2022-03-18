@@ -9,10 +9,10 @@ function App() {
     const uglyThingList = uglyThingsArr.map(thing => <UglyThing key={thing._id} attributes={thing}/>)
 
     return (
-        <>
+        <div>
             <Form />
             {uglyThingList}
-        </>
+        </div>
     )
 }
 

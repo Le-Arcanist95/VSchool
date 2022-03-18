@@ -22,9 +22,9 @@ function UglyThing(props) {
     }
 
     return (
-        <div>
+        <>
             {isEditing ? 
-                <div>
+                <div className="thing--Edit">
                     <input name="title" value={editData.title} onChange={editChange}/>
                     <input name="description" value={editData.description} onChange={editChange}/>
                     <input name="imgUrl" value={editData.imgUrl} onChange={editChange}/>
@@ -34,10 +34,11 @@ function UglyThing(props) {
                     }}> Save </button>
                 </div>
             :
-                <div>
+                <div className="thing--Static">
                     <h1>{title}</h1>
                     <p>{description}</p>
                     <img alt="" src={imgUrl} />
+                    <br />
                     <button onClick={() => {
                         setIsEditing(true);
                         setEditData({
@@ -50,8 +51,12 @@ function UglyThing(props) {
                 </div>
 
             }
-        </div>
+        </>
     )
+}
+
+UglyThing.defaultProps = {
+    imgUrl: "https://www.leadershipmartialartsct.com/wp-content/uploads/2017/04/default-image.jpg"
 }
 
 export default UglyThing;
