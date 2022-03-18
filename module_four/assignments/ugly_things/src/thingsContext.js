@@ -42,11 +42,19 @@ function ThingsContextProvider(props) {
                 ]
             }))
     }
-    function handleEdit(id) {
-        console.log(id)
+    function handleEdit(id, data) {
+        fetch(`https://api.vschool.io/levi-arcane/thing/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        })
+            .then(res => res.json())
+            .then(data => console.log(data))
     }
     function handleDelete(id) {
-        console.log(id)
+        fetch(`https://api.vschool.io/levi-arcane/thing/${id}`, {method: "DELETE"})
     }
 
     return (

@@ -9,7 +9,7 @@ function UglyThing(props) {
         imgUrl: ""
     })
     const [isEditing, setIsEditing] = useState(false);
-    const { handleEdit, handleSave, handleDelete } = useContext(ThingsContext);
+    const { handleEdit, handleDelete } = useContext(ThingsContext);
     const { _id, title, description, imgUrl } = props.attributes;
 
     function editChange(e) {
@@ -30,7 +30,7 @@ function UglyThing(props) {
                     <input name="imgUrl" value={editData.imgUrl} onChange={editChange}/>
                     <button onClick={() => {
                         setIsEditing(false);
-                        handleSave(_id, editData);
+                        handleEdit(_id, editData);
                     }}> Save </button>
                 </div>
             :
@@ -40,7 +40,11 @@ function UglyThing(props) {
                     <img alt="" src={imgUrl} />
                     <button onClick={() => {
                         setIsEditing(true);
-                        handleEdit(_id);
+                        setEditData({
+                            title: title,
+                            description: description,
+                            imgUrl: imgUrl
+                        })
                     }}> Edit </button>
                     <button onClick={() => handleDelete(_id)}> Delete </button>
                 </div>
