@@ -13,7 +13,7 @@ function ThingsContextProvider(props) {
     useEffect(() => {
         fetch("https://api.vschool.io/levi-arcane/thing")
             .then(res => res.json())
-            .then(data => setUglyThingsArr(data))
+            .then(response => setUglyThingsArr(response))
     }, [])
 
     function handleChange(e) {
@@ -51,10 +51,12 @@ function ThingsContextProvider(props) {
             body: JSON.stringify(data)
         })
             .then(res => res.json())
-            .then(data => console.log(data))
+            .then(response => setUglyThingsArr(prevArr => prevArr.map(uglyThing => uglyThing._id !== id ? uglyThing : response)))
     }
     function handleDelete(id) {
         fetch(`https://api.vschool.io/levi-arcane/thing/${id}`, {method: "DELETE"})
+            .then(res => res.json())
+            .then(response => setUglyThingsArr(prevArr => prevArr.filter(uglyThing => uglyThing._id !== response._id)))
     }
 
     return (
