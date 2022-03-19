@@ -37,3 +37,39 @@ nav a {
     border-radius: 10px;
     box-shadow: 0 0 1px 1px rgb(119, 119, 255);
 }
+.homePage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    margin-top: 32px;
+    height: 620px;
+    width: 832px;
+    padding: 16px;
+    background: url("https://www.phcppros.com/ext/resources/DO-NOT-DELETE/Plumbing-Magic.jpg?t=1503588903&width=1080")
+}
+.homePage p {
+    width: 50%;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    text-align: center;
+}
+.servicesPage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 32px;
+    margin: auto;
+    margin-top: 32px;
+    background-color: aliceblue;
+    width: 25%;
+}
+.contactPage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 32px;
+    padding: 100px;
+}
