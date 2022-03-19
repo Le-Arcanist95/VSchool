@@ -2,7 +2,7 @@ import React from "react";
 
 export default function About() {
     return (
-        <div className="aboutPage">
+        <div className="servicesPage">
             <h2> Services </h2>
             <ul>
                 <li>
