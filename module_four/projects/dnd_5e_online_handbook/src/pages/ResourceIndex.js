@@ -1,53 +1,67 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import Axios from "axios";
+
+//Change recieved string into title format (i.e. The Worst Error To Fix)
+function formatTitle(str) {
+    return (
+        str.replaceAll("-", " ")
+        .split(" ")
+        .map(newKey => newKey.charAt(0).toUpperCase() + newKey.slice(1))
+        .join(" ")
+    ) 
+}
+//Custom Hook for API calls
+function useFetch(url) {
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+        if (!url) return;
+        const fetchData = async () => {
+            const response = await fetch(url);
+            const data = await response.json()
+            setData(data)
+        }
+        fetchData();
+    }, [url]);
+
+    return data;
+}
+// function useDataMapping(arr) {
+//     arr.map(x => {
+//         useFetch()
+//     })
+// }
 
 export default function ResourceIndex() {
-    const [index, setIndex] = useState({});
-    const [resourceList, setResourceList] = useState([])
+    const index = useFetch("https://www.dnd5eapi.co/api");
     
-    //Initial API call to receive Table of Contents
-    useEffect(() => {
-        Axios.get("https://www.dnd5eapi.co/api/")
-            .then(response => response.json())
-            .then(data => setIndex(data))
-    }, []);
-
     //Create list items to populate Table of Contents
+        // 1. Convert recieved object into an array and map over it.
+        // 2. Change naming convention for list item display.
+        // 3. Make fetch call within each recieved item to enumerate the api tree.
+        // 4. Map over received data from each fetch to create sublist items.
     const displayList = Object.keys(index).map(item => {
-        // Alter name for spacing and capitalization
-        const name = (
-            item.replaceAll("-", " ")
-                .split(" ")
-                .map(newKey => newKey.charAt(0).toUpperCase() + newKey.slice(1))
-                .join(" ")
-        )
-
-        //Create sublist to hold links for each resource from the index
-        Axios.get(`https://www.dnd5eapi.co/api/${item}`)
-            .then(response => response.json())
-            .then(data => setResourceList(data.results));
-
-        const subDisplayList = resourceList.map(resource => {
+        const { data } = useFetch(`https://www.dnd5eapi.co/api/${item}`);
+        const summaryName = formatTitle(item);
+        const subDisplayList = data.map(resource => {
            return (
                <li key={resource.index}>
                    <Link to={`/resources/${resource.url}`}> {resource.name} </Link>
                </li>
            ) 
-        })
+        });
 
-        //Return list item with collapsable display for each item on the ToC
         return (
             <li key={item}>
                 <details>
-                    <summary> {name} </summary>
+                    <summary> {summaryName} </summary>
                     <ul className="resources-list">
                         {subDisplayList}
                     </ul>
                 </details>
             </li>
-        )
-    })
+        );
+    });
 
     return (
         <div className="resources-container">
@@ -56,5 +70,5 @@ export default function ResourceIndex() {
                 {displayList}
             </ul>
         </div>
-    )
-}
+    );
+};
