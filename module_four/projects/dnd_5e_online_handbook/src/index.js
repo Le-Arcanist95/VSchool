@@ -1,35 +1,33 @@
 import React from "react";
-import { render } from "react-dom";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { render } from "react-dom"
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
-import App from "./App";
-import ResourceIndex from "./pages/ResourceIndex";
-import Resource from "./pages/Resource";
+import Layout from "./pages/Layout";
+import Home from "./pages/Home";
 import About from "./pages/About";
+import TableOfContents from "./pages/TableOfContents";
 import "./index.css";
 
 const rootElement = document.getElementById("root");
+
 render(
     <BrowserRouter>
         <Routes>
-        {/* Nest Routes inside of App component to maintain layout of page */}
-            <Route path="/" element={<App />}>
-                <Route path="index" element={<ResourceIndex />}>
-        {/* Nest individual calls inside of the ToC element for easy useParams API calls */}
-                    <Route path=":resourceName" element={<Resource />}/>
-                </Route>
+            <Route path="/" element={<Layout />}>
+                <Route index element={<Home />}/>
                 <Route path="about" element={<About />} />
-        {/* Create route for missing content to prevent 404 */}
-                <Route
-                    path="*"
+                <Route path="table-of-contents" element={<TableOfContents />} />
+                <Route 
+                    path="*" 
                     element={
-                        <div style={{ padding: "1rem" }}>
-                            <p>Woops, it's an empty page!</p>
-                        </div>
+                        <main>
+                            <h2>Oops! Looks like there is nothing to be displayed here</h2>
+                            <Link to={"/"}> Back to Home </Link>
+                        </main>
                     }
                 />
             </Route>
         </Routes>
     </BrowserRouter>,
     rootElement
-);
+)
