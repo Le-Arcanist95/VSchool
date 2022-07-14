@@ -1,0 +1,3 @@
+[submodule "module_three/projects/itla-meme-generator"]
+	path = module_three/projects/itla-meme-generator
+	url = https://github.com/ithomas98/itla-meme-generator
