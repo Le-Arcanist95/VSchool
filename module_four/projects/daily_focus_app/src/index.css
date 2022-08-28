@@ -2,3 +2,31 @@
     margin: 0;
     padding: 0;
 }
+#page-container {
+    position: relative;
+    min-height: 100vh;
+}
+#content-wrapper {
+    padding-bottom: 3rem;
+}
+#header {
+   position: sticky;
+   top: 0;
+   height: 7.5rem;
+   background: lightblue;
+   text-align: center; 
+}
+#footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 3rem;
+    background: lightblue;
+    text-align: center;
+}
+.title {
+    padding: 1rem;
+}
+.credit {
+    padding: 1rem;
+}

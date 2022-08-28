@@ -5,10 +5,12 @@ import Footer from "./components/Footer";
 
 export default function App() {
     return (
-        <>
+        <div id="page-container">
             <Header />
-            <Outlet />
+            <div className="content-wrapper">
+                <Outlet />
+            </div>
             <Footer />
-        </>
+        </div>
     );
 };
