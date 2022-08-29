@@ -7,7 +7,7 @@ export default function App() {
     return (
         <div id="page-container">
             <Header />
-            <div className="content-wrapper">
+            <div id="content-wrapper">
                 <Outlet />
             </div>
             <Footer />

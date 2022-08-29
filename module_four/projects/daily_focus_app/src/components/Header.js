@@ -4,7 +4,7 @@ import Navbar from "./Navbar";
 export default function Header() {
     return (
         <header id="header">
-            <h1 className="title">Daily Focus App</h1>
+            <p className="cloud-text cloud-title">Daily Focus App</p>
             <Navbar />
         </header>
     );
