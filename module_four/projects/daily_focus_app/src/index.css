@@ -7,7 +7,7 @@
 html {
     color: #1F271B;
 }
-
+/* IDs */
 #page-container {
     position: relative;
     min-height: 100vh;
@@ -32,19 +32,39 @@ html {
 #navbar {
     padding: 0.25rem;
 }
-#footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 3rem;
-    background: #6D435A;
+
+/* Header Text Animation */
+.cloud-text {
+    font-family: 'Coiny', cursive;
+    background-clip: text;
+    -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;	
+    background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/769286/clouds.jpg);
+    background-size: auto;
+    background-attachment: unset;
+    background-position: 0%;
+    width: 80%;
+    margin: auto;
+    font-size: 64px;
+    animation: clouds-moving infinite 220s;
+    animation-fill-mode: forwards;
+    animation-play-state: running;
+    animation-timing-function: linear;
     text-align: center;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+}
+@keyframes clouds-moving {
+    0% {
+        background-position: 0%;	
+    }
+    50% {
+        background-position: 100%;	
+    }
+    100% {
+        background-position: 0%;
+    }
 }
 
-.credit {
-    padding: 1rem;
-}
+/* Classes */
 .nav-list {
     list-style-type: none;
     display: flex;
@@ -56,40 +76,4 @@ html {
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
     padding: 0.75rem 18rem;
     background: #3C6E71;
-}
-
-.cloud-text {
-	font-family: 'Coiny', cursive;
-    background-clip: text;
-	-webkit-background-clip: text;
-  	-webkit-text-fill-color: transparent;	
-	background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/769286/clouds.jpg);
-	background-size: auto;
-	background-attachment: unset;
-	background-position: 0%;
-	width: 80%;
-    margin: auto;
-	font-size: 64px;
-	animation: clouds-moving infinite 220s;
-	animation-fill-mode: forwards;
-	animation-play-state: running;
-	animation-timing-function: linear;
-	text-align: center;
-}
-@keyframes clouds-moving {
-	0% {
-		background-position: 0%;	
-	}
-	50% {
-		background-position: 100%;	
-	}
-	100% {
-		background-position: 0%;
-	}
-}
-.attribute {
-	position: relative;
-    margin-top: 5px;
-	font-size: 24px;
-	text-align: center;
 }
