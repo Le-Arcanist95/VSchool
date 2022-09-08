@@ -1,19 +1,55 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 export default function Home() {
     // NASA Astronomy Picture of the Day
     const [AstroPicture, setAstroPicture] = useState({
         title: "",
         explanation: "",
-        url: ""
+        url: "",
+        copyright: ""
     });
     // Quote of the day
-    const [QuoteOfTheDayElement, setQuoteOfTheDayElement] = useState("");
-
+    const [QuoteOfTheDay, setQuoteOfTheDay] = useState({
+        quote: "",
+        author: "",
+        backgroundImg: "",
+        title: ""
+    });
+    
+    //useEffect for Axios requests
     useEffect(() => {
+        const fetchData = async () => {
+            const endpoints = [
+                'https://api.nasa.gov/planetary/apod?api_key=YQVratHzp85sqeL2JyuCAMOXJFVhUuXaBLoIvSco',
+                'https://quotes.rest/qod'
+            ]
+            axios.all(endpoints.map((endpoint) => axios.get(endpoint)))
+                .then(
+                    axios.spread(({data: apod}, {data: qod}) => {
+                        const astroPicture = apod;
+                        const quoteData = qod.contents.quotes[0]
+                        
+                        setAstroPicture({
+                            title: astroPicture.title,
+                            explanation: astroPicture.explanation,
+                            url: astroPicture.hdurl,
+                            copyright: astroPicture.copyright
+                        })
+                        setQuoteOfTheDay({
+                            quote: quoteData.quote,
+                            author: quoteData.author,
+                            backgroundImg: quoteData.background,
+                            title: quoteData.title
+                        })
+                    })
+                );
+        };
         
-    })
 
+        fetchData();
+    }, [])
+    
     return (
         <div>
             <section className="introduction-section">
@@ -27,7 +63,14 @@ export default function Home() {
                 <p> {AstroPicture.explanation} </p>
             </section>
             <section className="quote-section">
-                {QuoteOfTheDayElement}
+                <img alt="" src={QuoteOfTheDay.backgroundImg}/>
+                <p className="overlay-quote">{QuoteOfTheDay.quote} - <em>{QuoteOfTheDay.author}</em></p>
+                <span className="overlay-credit" style={{zIndex: 50, fontSize: "0.9em", fontWeight: "bold"}}>
+                    <img src="https://theysaidso.com/branding/theysaidso.png" height="20" width="20" alt="theysaidso.com"/>
+                    <a href="https://theysaidso.com" title="Powered by quotes from theysaidso.com" style={{color: "#ccc", marginLeft: "4px", verticalAlign: "middle"}}>
+                        They Said So®
+                    </a>
+                </span>
             </section>
         </div>
     );
