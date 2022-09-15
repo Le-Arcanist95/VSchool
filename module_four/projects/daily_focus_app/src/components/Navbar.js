@@ -6,17 +6,23 @@ export default function Navbar() {
         <nav id="navbar">
             <ul className="nav-list">
                 <li className="nav-item">
-                    <NavLink to="/" className={"nav-link"} end>
+                    <NavLink to="/" className={({ isActive }) =>
+                        isActive ? "nav-link-active" : "nav-link"
+                    } end>
                         Home
                     </NavLink>
                 </li>
                 <li className="nav-item">
-                    <NavLink to="journal" className={"nav-link"}>
+                    <NavLink to="journal" className={({ isActive }) =>
+                        isActive ? "nav-link-active" : "nav-link"
+                    }>
                         Journal
                     </NavLink>
                 </li>
                 <li className="nav-item">
-                    <NavLink to="tasks" className={"nav-link"}>
+                    <NavLink to="tasks" className={({ isActive }) =>
+                        isActive ? "nav-link-active" : "nav-link"
+                    }>
                         Tasks
                     </NavLink>
                 </li>

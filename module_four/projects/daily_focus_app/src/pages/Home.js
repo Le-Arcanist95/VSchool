@@ -51,18 +51,24 @@ export default function Home() {
     }, [])
     
     return (
-        <div>
-            <section className="introduction-section">
-                <h3> Take a moment to focus yourself. </h3>
-                <p> Hello there, and welcome to a space created for you! In every day, within every second of it, we can find ourselves swept away by the constant flood of information we're being fed; This can get overwhelming and eventually cause burnout where we lose our ability to continue. When I started this project, my intention was to create a place where I could keep up with my thoughts in a way that worked for me. I've always struggled with physically writing things down with any bit of consistency, but I find myself sitting down at a computer screen constantly throughout the day and typing things out isn't as much of an issue for my perfectionism. If you've found this little creation, or been led here by another, I hope or imagine that these things resonate with you. Take a moment to look around and see if it's for you too! </p>
-            </section>
-            <section className="astronomy-picture-section">
-                <h3> {AstroPicture.title} </h3>
+        <div className="content-container">
+            <div className="introduction section">
+                <h3 className="section-title"> Are you focused today? </h3>
+                <hr/>
+                <p> Hello there! Welcome to a space created for you. In the day to day, within each and every second of them, we can find ourselves swept away by the constant flood of information we're being fed; This can get overwhelming and eventually cause burnout where we lose our ability to continue. When I started this project, my intention was to create a place where I could keep up with my thoughts in a way that worked for me. I've always struggled with physically writing things down consistently because I have to look for the pencil and pad, writing left-handed I will sometimes smear the ink or graphite, or I'll fill up a notebook and 'Dratz!' I've got to go out and buy another. I am aware these are minimal concerns, but ease is important when the task seems daunting! Although, I find myself sitting down at a computer screen constantly throughout the day and typing things out isn't as much of an issue for my perfectionism. It's worked for me so far. If you've found this little creation, or been led here by another, I imagine that these things may resonate with you. Will you take a moment to look around and give it a go as well? </p>
+            </div>
+            <div className="astronomy-pod section">
+                <h3 className="section-title">
+                    <b>Astronomy Picture of the Day: </b>
+                    <br/>
+                    {AstroPicture.title}
+                </h3>
                 {/* eslint-disable-next-line jsx-a11y/img-redundant-alt */}
                 <img alt="NASA Astronomy Picture of the Day" src={AstroPicture.url}/>
-                <p> {AstroPicture.explanation} </p>
-            </section>
-            <section className="quote-section">
+                <hr/>
+                <p> <b>Explanation: </b> {AstroPicture.explanation} </p>
+            </div>
+            <div className="inspirational section">
                 <img alt="" src={QuoteOfTheDay.backgroundImg}/>
                 <p className="overlay-quote">{QuoteOfTheDay.quote} - <em>{QuoteOfTheDay.author}</em></p>
                 <span className="overlay-credit" style={{zIndex: 50, fontSize: "0.9em", fontWeight: "bold"}}>
@@ -71,7 +77,7 @@ export default function Home() {
                         They Said So®
                     </a>
                 </span>
-            </section>
+            </div>
         </div>
     );
 };
