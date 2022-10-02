@@ -1,22 +1,22 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useEffect, useState } from "react";
+import Axios from "axios";
 
 export default function Home() {
     // NASA Astronomy Picture of the Day
-    const [AstroPicture, setAstroPicture] = useState({
+    const [astroPicture, setAstroPicture] = useState({
         title: "",
         explanation: "",
         url: "",
         copyright: ""
     });
     // Quote of the day
-    const [QuoteOfTheDay, setQuoteOfTheDay] = useState({
+    const [quoteOfTheDay, setQuoteOfTheDay] = useState({
         quote: "",
         author: "",
         backgroundImg: "",
         title: ""
     });
-    
+
     //useEffect for Axios requests
     useEffect(() => {
         const fetchData = async () => {
@@ -24,32 +24,30 @@ export default function Home() {
                 'https://api.nasa.gov/planetary/apod?api_key=YQVratHzp85sqeL2JyuCAMOXJFVhUuXaBLoIvSco',
                 'https://quotes.rest/qod'
             ]
-            axios.all(endpoints.map((endpoint) => axios.get(endpoint)))
+            Axios.all(endpoints.map((endpoint) => Axios.get(endpoint)))
                 .then(
-                    axios.spread(({data: apod}, {data: qod}) => {
+                    Axios.spread(({data: apod}, {data: qod}) => {
                         const astroPicture = apod;
-                        const quoteData = qod.contents.quotes[0]
+                        const quoteData = qod.contents.quotes[0];
                         
                         setAstroPicture({
                             title: astroPicture.title,
                             explanation: astroPicture.explanation,
                             url: astroPicture.hdurl,
                             copyright: astroPicture.copyright
-                        })
+                        });
                         setQuoteOfTheDay({
                             quote: quoteData.quote,
                             author: quoteData.author,
                             backgroundImg: quoteData.background,
                             title: quoteData.title
-                        })
+                        });
                     })
                 );
         };
         
-
         fetchData();
-    }, [])
-    
+    }, []);
     return (
         <div className="content-container">
             <div className="introduction section">
@@ -59,18 +57,16 @@ export default function Home() {
             </div>
             <div className="astronomy-pod section">
                 <h3 className="section-title">
-                    <b>Astronomy Picture of the Day: </b>
-                    <br/>
-                    {AstroPicture.title}
+                    {astroPicture.title}
                 </h3>
                 {/* eslint-disable-next-line jsx-a11y/img-redundant-alt */}
-                <img alt="NASA Astronomy Picture of the Day" src={AstroPicture.url}/>
+                <img alt="NASA Astronomy Picture of the Day" src={astroPicture.url}/>
                 <hr/>
-                <p> <b>Explanation: </b> {AstroPicture.explanation} </p>
+                <p> <b>Explanation: </b> {astroPicture.explanation} </p>
             </div>
             <div className="inspirational section">
-                <img alt="" src={QuoteOfTheDay.backgroundImg}/>
-                <p className="overlay-quote">{QuoteOfTheDay.quote} - <em>{QuoteOfTheDay.author}</em></p>
+                <img alt="" src={quoteOfTheDay.backgroundImg}/>
+                <p className="overlay-quote">{quoteOfTheDay.quote} - <em>{quoteOfTheDay.author}</em></p>
                 <span className="overlay-credit" style={{zIndex: 50, fontSize: "0.9em", fontWeight: "bold"}}>
                     <img src="https://theysaidso.com/branding/theysaidso.png" height="20" width="20" alt="theysaidso.com"/>
                     <a href="https://theysaidso.com" title="Powered by quotes from theysaidso.com" style={{color: "#ccc", marginLeft: "4px", verticalAlign: "middle"}}>
