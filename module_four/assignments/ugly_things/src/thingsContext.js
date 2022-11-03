@@ -4,12 +4,13 @@ const ThingsContext = createContext()
 
 function ThingsContextProvider(props) {
     const [uglyThingsArr, setUglyThingsArr] = useState([]);
+    ;
     const [formData, setFormData] = useState({
         title: "",
         description: "",
         imgUrl: "https://www.leadershipmartialartsct.com/wp-content/uploads/2017/04/default-image.jpg"
     })
-
+    // Retrieve information from the API and set state based on response
     useEffect(() => {
         fetch("https://api.vschool.io/levi-arcane/thing")
             .then(res => res.json())

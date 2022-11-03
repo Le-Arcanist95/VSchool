@@ -5,6 +5,7 @@ import Main from "./Main";
 import Footer from "./Footer";
 
 function App() {
+    // Set page layout
     return (
         <>
             <Header />

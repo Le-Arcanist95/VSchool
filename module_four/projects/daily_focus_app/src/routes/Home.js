@@ -42,6 +42,7 @@ export default function Home() {
                             backgroundImg: quoteData.background,
                             title: quoteData.title
                         });
+                        console.log({data: apod})
                     })
                 );
         };
@@ -60,7 +61,12 @@ export default function Home() {
                     {astroPicture.title}
                 </h3>
                 {/* eslint-disable-next-line jsx-a11y/img-redundant-alt */}
-                <img alt="NASA Astronomy Picture of the Day" src={astroPicture.url}/>
+                {
+                    /* Create ternerary operator to conditionally render for videos. (Waiting on next video to retrieve format) */
+                    console.log(astroPicture.url)
+                }
+                {/* isVideo ? <ReactPlayer>{astroPicture.url}</ReactPlayer> : <img alt="NASA Astronomy of the Day" src={astroPicture.url}/>*/}
+                <img alt="NASA Astronomy of the Day" src={astroPicture.url}/>
                 <hr/>
                 <p> <b>Explanation: </b> {astroPicture.explanation} </p>
             </div>
