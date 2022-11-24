@@ -8,7 +8,7 @@ function ThingsContextProvider(props) {
     const [formData, setFormData] = useState({
         title: "",
         description: "",
-        imgUrl: "https://www.leadershipmartialartsct.com/wp-content/uploads/2017/04/default-image.jpg"
+        imgUrl: "https://picsum.photos/id/237/536/354"
     })
     // Retrieve information from the API and set state based on response
     useEffect(() => {
