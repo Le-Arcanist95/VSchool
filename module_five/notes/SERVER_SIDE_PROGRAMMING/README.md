@@ -29,6 +29,17 @@ a# Frontend
 
 # module.exports - (export)
 
+# Vocabulary
+
+    # Route
+        * An event listener for http requests
+
+    # Endpoint
+        * '/item" "/user
+    
+    # Port
+        * localhost: 3000
+
 # Supplementary: 
     * Better ways to organize our code into reusable pieces.
     * Ways to deal with files
