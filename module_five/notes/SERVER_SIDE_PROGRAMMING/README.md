@@ -40,6 +40,44 @@ a# Frontend
     # Port
         * localhost: 3000
 
+# Intro to REST API architechture
+
+    # REST - Representational State Transfer
+
+    # Resource - Single item (object) in a database
+        * /user
+
+    # Collection - A collection of similar items in a database
+        * /users
+
+    # Base (root) URL - The beginning of the URL used for all requests against the API
+        * http://amazon.com/
+
+    # API Endpoint - The part after the Base URL
+        * http://amazon.com/movies
+        * http://amazon.com/movies/f21u9fjasd0q
+
+    # Parameters
+        * /movies/:movieId
+
+    # Query (query string)
+        * /movies?genre=action&year=1999
+
+    # Client - Frontend
+        * The person/machine that is consuming the information from your API. (Browser Applications, Mobile Apps, Servers, etc.)
+
+    # Server - Intermediary
+        * The machine your API is running on.
+
+    # Request Method - Create.Read.Update.Delete
+        * GET (Read)
+        * POST (Create/Write)
+        * PUT (Update)
+        * DELETE (Delete)
+
+# Middleware - A function that fires on the inbetween
+
+# Request Body (req.body)
 # Supplementary: 
     * Better ways to organize our code into reusable pieces.
     * Ways to deal with files
