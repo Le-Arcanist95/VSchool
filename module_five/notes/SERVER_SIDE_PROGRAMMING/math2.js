@@ -1,7 +1,14 @@
-const factor = 2;
+let factor = 2;
 
-function multiplyByTwo(num) {
+function multiply(num) {
     return num * factor;
 };
 
-module.exports = multiplyByTwo;
+function setFactor(newFactor) {
+    factor = newFactor
+};
+
+module.exports = {
+    multiply,
+    setFactor
+};
