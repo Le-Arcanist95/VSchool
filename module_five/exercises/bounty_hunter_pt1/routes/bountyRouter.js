@@ -42,6 +42,8 @@ bountyRouter.route('/:bountyId')
     .delete((req, res) => {
         console.log(`Trying to delete ${req.params.bountyId}`);
     });
-
+bountyRouter.get('/search/bounty', (req, res) => {
+        console.log(req);
+    })
 
 module.exports = bountyRouter;
