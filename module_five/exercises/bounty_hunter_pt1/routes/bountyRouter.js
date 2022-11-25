@@ -1,4 +1,4 @@
-const express = reqiure('express');
+const express = require('express');
 const { v4: uuidv4 } = require('uuid');
 const bountyRouter = express.Router();
 
@@ -8,7 +8,7 @@ const bounties = [
         fName: "Luke",
         lName: "Skywalker",
         living: true,
-        bounty: 300,
+        reward: 300,
         type: "Jedi",
         _id: uuidv4()
     },
@@ -16,13 +16,13 @@ const bounties = [
         fName: "Darth",
         lName: "Vader",
         living: false,
-        bounty: 500,
+        reward: 500,
         type: "Sith",
         _id: uuidv4()
     }
 ];
 
-app.route('/')
+bountyRouter.route('/')
     .get((req, res) => {
         res.send(bounties);
     })
@@ -32,10 +32,9 @@ app.route('/')
         bounties.push(newBounty);
         console.log(`Successfully added ${newBounty.fName} ${newBounty.lName} to the hitlist.`);
     });
-app.route('/:bountyId')
+bountyRouter.route('/:bountyId')
     .get((req, res) => {
-        const reqItem = bounties.find(bounty => bounty._id = req.params.bountyId);
-        res.send(reqItem);
+        res.send(bounties.find(bounty => bounty._id === req.params.bountyId));
     })
     .put((req, res) => {
         console.log(`Trying to update ${req.params.bountyId}`);

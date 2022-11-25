@@ -60,8 +60,11 @@ a# Frontend
     # Parameters
         * /movies/:movieId
 
-    # Query (query string)
+    # Query (query string - typically to filter results)
         * /movies?genre=action&year=1999
+        * Begins with the "?".
+        * Built of key=value pairs.
+        * Multiple queries separated by the "&".
 
     # Client - Frontend
         * The person/machine that is consuming the information from your API. (Browser Applications, Mobile Apps, Servers, etc.)
@@ -75,9 +78,9 @@ a# Frontend
         * PUT (Update)
         * DELETE (Delete)
 
-# Middleware - A function that fires on the inbetween
+    # Middleware - A function that fires on the inbetween
 
-# Request Body (req.body)
+    # Request Body (req.body)
 # Supplementary: 
     * Better ways to organize our code into reusable pieces.
     * Ways to deal with files
