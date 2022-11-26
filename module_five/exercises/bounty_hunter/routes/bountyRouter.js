@@ -37,10 +37,17 @@ bountyRouter.route('/:bountyId')
         res.send(bounties.find(bounty => bounty._id === req.params.bountyId));
     })
     .put((req, res) => {
-        console.log(`Trying to update ${req.params.bountyId}`);
+        const selectedBounty = bounties.find(bounty => bounty._id === req.params.bountyId);
+        const updates = req.body;
+        const newBountySheet = Object.assign(selectedBounty, req.body)
+        res.send(newBountySheet);
+        console.log(`Successfully updated bounty ID# ${req.params.bountyId}`);
     })
     .delete((req, res) => {
-        console.log(`Trying to delete ${req.params.bountyId}`);
+        const bountyId = req.params.userId;
+        const bountyIndex = bounties.findIndex(bounty => bounty._id === bountyId);
+        bounties.splice(bountyIndex, 1)
+        res.send('Successfully deleted the selected bounty.');
     });
 bountyRouter.get('/search/bounty', (req, res) => {
         console.log(req);
