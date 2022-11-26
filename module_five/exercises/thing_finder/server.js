@@ -1,7 +1,6 @@
 const { query } = require('express');
 const express = require('express');
 const app = express();
-const port = process.env.PORT || 1234;
 
 const inventoryItems = [
     {
@@ -38,7 +37,7 @@ const inventoryItems = [
 app.get("/item", (req, res) => {
     const query = req.query;
     let filteredItems = []
-    
+    // Key filter
     function filter(query) {
         if(query.name) {
             return filteredItems = inventoryItems.filter(item => item.name === query.name);
@@ -57,6 +56,7 @@ app.get("/item", (req, res) => {
 });
 
 
+const port = process.env.PORT || 5000;
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });

@@ -44,7 +44,7 @@ bountyRouter.route('/:bountyId')
         console.log(`Successfully updated bounty ID# ${req.params.bountyId}`);
     })
     .delete((req, res) => {
-        const bountyId = req.params.userId;
+        const bountyId = req.params.bountyId;
         const bountyIndex = bounties.findIndex(bounty => bounty._id === bountyId);
         bounties.splice(bountyIndex, 1)
         res.send('Successfully deleted the selected bounty.');
