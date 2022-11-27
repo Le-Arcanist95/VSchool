@@ -88,6 +88,10 @@ a# Frontend
             * Moves on to the middleware in line on our server
 
     # Request Body (req.body)
+
+# Connecting the Front-end to the Backend
+    # Folder Structure
+    # Proxy
 # Supplementary: 
     * Better ways to organize our code into reusable pieces.
     * Ways to deal with files
