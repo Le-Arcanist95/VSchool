@@ -25,9 +25,15 @@ export default function Bounty(props) {
                 <h4> Faction: {type} </h4>
                 <hr/>
                 <BountySubmissionForm 
-                    info={{fName, lName, living, reward, type, _id}}
-                    functions={{editBounty, isEditing, setIsEditing}}
+                    fName={fName}
+                    lName={lName}
+                    living={living}
+                    reward={reward}
+                    type={type}
+                    _id={_id}
+                    functions={{isEditing, setIsEditing}}
                     btnText="Submit Edit"
+                    submit={editBounty}
                 />
             </>
             }

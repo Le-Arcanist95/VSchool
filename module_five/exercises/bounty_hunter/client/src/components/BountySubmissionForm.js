@@ -5,22 +5,27 @@ export default function BountySubmissionForm(props) {
     const initInputs = { 
         fName: props.fName || "",
         lName: props.lName || "",
-        status: props.living || "",
-        reward: props.reward || null,
+        living: props.living || false,
+        reward: props.reward || "",
         faction: props.type || ""
     };
     const [inputs, setInputs] = useState(initInputs);
 
     function handleChange(e) {
-        const { name, value} = e.target;
-        setInputs(prevInputs => ({...prevInputs, [name]: value}));
+        const {name, value, type, checked} = e.target;
+        setInputs(prevInputs => {
+            return {
+                ...prevInputs,
+                [name]: type === "checkbox" ? checked : value
+            };
+        });
     };
 
     function handleSubmit(e) {
         e.preventDefault();
         props.submit(inputs, props._id);
-        if (props.editToggle.isEditing) {
-            props.editToggle.setIsEditing(false);
+        if (props.functions.isEditing) {
+            props.functions.setIsEditing(false);
         }
         setInputs(initInputs);
     };
@@ -41,14 +46,15 @@ export default function BountySubmissionForm(props) {
                 onChange={handleChange}
                 placeholder="Last Name"
             />
-            <input 
-                type="checkbox"
-                name="status"
-                checked={inputs.status}
-                value={inputs.status}
-                onChange={handleChange}
-                placeholder="Living?"
-            />
+            <label> Living: 
+                <input 
+                    type="checkbox"
+                    name="status"
+                    checked={inputs.living}
+                    onChange={handleChange}
+                    placeholder="Living?"
+                />
+            </label>
             <input 
                 type="number"
                 name="reward"
