@@ -46,8 +46,8 @@ export default function App() {
                 <Bounty
                 {...bounty} 
                 key={bounty._id}
-                deleteUser={deleteBounty}
-                editUser={editBounty}
+                deleteBounty={deleteBounty}
+                editBounty={editBounty}
                 />)
             }
         </div>
