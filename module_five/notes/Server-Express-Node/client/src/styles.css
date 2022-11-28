@@ -1,0 +1,47 @@
+p {
+    margin: 5px;
+}
+
+form {
+    border: 1px solid black;
+    padding: 10px;
+    margin: 5px;
+}
+
+input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid black;
+    border-radius: 8px;
+    margin: 5px;
+}
+
+button {
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.delete-btn {
+    background-color: firebrick;
+    color: whitesmoke;
+}
+
+.edit-btn {
+    background-color: cornflowerblue;
+    color: whitesmoke;
+}
+
+.user-container {
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 5px;
+    padding: 10px;
+}
+
+.pet-container {
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 8px;
+    margin: 15px;
+}

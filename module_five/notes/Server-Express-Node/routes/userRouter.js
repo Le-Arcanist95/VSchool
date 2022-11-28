@@ -20,7 +20,7 @@ userRouter.route('/')
         const newUser = req.body;
         newUser._id = uuidv4();
         users.push(newUser);
-        res.send(`Successfully added ${req.body.name} to the database.`);
+        res.send(newUser);
     });   
 
 userRouter.route('/:userId')
