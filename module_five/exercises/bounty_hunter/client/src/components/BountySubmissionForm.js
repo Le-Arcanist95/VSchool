@@ -9,24 +9,34 @@ export default function BountySubmissionForm(props) {
         reward: props.reward || "",
         faction: props.type || ""
     };
+    
+    // Set state with initial object as default
     const [inputs, setInputs] = useState(initInputs);
-
+    
+    // Function for updating state as client inputs data
     function handleChange(e) {
-        const {name, value, type, checked} = e.target;
+        // Destructure event for required info
+        const {name, value} = e.target;
         setInputs(prevInputs => {
             return {
                 ...prevInputs,
-                [name]: type === "checkbox" ? checked : value
+                [name]: value
             };
         });
     };
-
+    // Function for POST or PUT requests and 'isEditing' toggle
     function handleSubmit(e) {
         e.preventDefault();
+        // Send POST or PUT request and include inputs if present
         props.submit(inputs, props._id);
-        if (props.functions.isEditing) {
-            props.functions.setIsEditing(false);
-        }
+        console.log(props);
+        // Toggle off 'isEditing'
+            if (props.functions !== undefined) {
+                if (props.functions.isEditing) {
+                    props.functions.setIsEditing(false);
+                };
+            };
+        // Reset state to default values
         setInputs(initInputs);
     };
 
@@ -46,21 +56,19 @@ export default function BountySubmissionForm(props) {
                 onChange={handleChange}
                 placeholder="Last Name"
             />
-            <label> Living: 
-                <input 
-                    type="checkbox"
-                    name="status"
-                    checked={inputs.living}
-                    onChange={handleChange}
-                    placeholder="Living?"
-                />
-            </label>
             <input 
                 type="number"
                 name="reward"
                 value={inputs.reward}
                 onChange={handleChange}
                 placeholder="Bounty Price"
+            />
+            <input 
+                type="text"
+                name="living"
+                value={inputs.living}
+                onChange={handleChange}
+                placeholder="Alive? (True or False)"
             />
             <input 
                 type="text"

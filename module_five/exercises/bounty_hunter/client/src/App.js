@@ -22,13 +22,17 @@ export default function App() {
     function deleteBounty(bountyId) {
         Axios.delete(`/bounty/${bountyId}`)
             // Update state to force refresh
-            .then(res => setBountyList(prevList => prevList.filter(bounty => bounty._id !== bountyId)))
+            .then(res => {
+                setBountyList(prevList => prevList.filter(bounty => bounty._id !== bountyId));
+            })
             .catch(err => console.log(err));
     };
     function editBounty(updates, bountyId) {
-        Axios.put(`/bounty/${bountyId}`)
+        Axios.put(`/bounty/${bountyId}`, updates)
             // Update state to reflect changes and force refresh
-            .then(res => bountyList.map(bounty => bounty._id !== bountyId ? bounty : res.data))
+            .then(res => {
+                setBountyList(prevList => prevList.map(bounty => bounty._id !== bountyId ? bounty : res.data));
+            })
             .catch(err => console.log(err));
     };
 
@@ -40,7 +44,10 @@ export default function App() {
     return (
         <div>
             {/* Form for handling new and updated bounties */}
-            <BountySubmissionForm submit={createBounty}/>
+            <BountySubmissionForm 
+                submit={createBounty}
+                btnText = "Submit"
+            />
             {/* Component creation for each bounty */}
             {bountyList.map(bounty => 
                 <Bounty

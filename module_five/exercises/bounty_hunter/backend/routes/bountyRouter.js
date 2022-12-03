@@ -39,7 +39,8 @@ bountyRouter.route('/:bountyId')
     .put((req, res) => {
         const selectedBounty = bounties.find(bounty => bounty._id === req.params.bountyId);
         const updates = req.body;
-        const newBountySheet = Object.assign(selectedBounty, req.body)
+        const newBountySheet = Object.assign(selectedBounty, req.body);
+        console.log({selectedBounty, updates, newBountySheet})
         res.send(newBountySheet);
         console.log(`Successfully updated bounty ID# ${req.params.bountyId}`);
     })

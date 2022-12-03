@@ -5,7 +5,7 @@ export default function Bounty(props) {
     const [isEditing, setIsEditing] = useState(false);
     const { fName, lName, living, reward, type, _id, editBounty, deleteBounty } = props;
 
-
+    console.log(living)
     return (
         <div>
             { !isEditing ?
@@ -32,7 +32,7 @@ export default function Bounty(props) {
                     type={type}
                     _id={_id}
                     functions={{isEditing, setIsEditing}}
-                    btnText="Submit Edit"
+                    btnText="Save"
                     submit={editBounty}
                 />
             </>
