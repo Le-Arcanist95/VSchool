@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const morgan = require('morgan');
-
+const mongoose = require('mongoose');
 
 // Middleware (for every request)
 app.use(express.json()); // Looks for a request body, and turns it into 'req.body'
@@ -21,9 +21,20 @@ app.use(morgan('dev')); // Logs requests to the console
 //     res.send(req.body);
 // });
 
+// Connect to DB
+mongoose.set('strictQuery', false);
+mongoose.connect('mongodb://localhost:27017/notesdb', () => console.log("Connected to the Database"));
+
+
 // Routes
 app.use( '/users', require( './routes/userRouter.js' ));
 app.use( '/pets', require( './routes/petRouter.js' ));
+
+// Error Handler
+app.use((err, req, res, next) => {
+    console.log(err);
+    return res.status(404).send({errMsg: err.message});
+});
 
 // Server listening
 const port = process.env.PORT || 5000;

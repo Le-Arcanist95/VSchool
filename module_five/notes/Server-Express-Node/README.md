@@ -89,6 +89,45 @@ a# Frontend
 
     # Request Body (req.body)
 
+# Status Codes
+    # 200 - Successful Response
+    # 201 - Successful Insert / Successful update
+    # 401 - Unauthorized
+    # 404 - Not Found
+    # 500 - Server Error
+
+    # https://http.cat
+
+# Database Types
+    # Relational - SQL, Postgres
+        * Data stored in tables (similar to Excel)
+        * Primary Key = ID
+        * Foreign Key = ID from Users
+        * No empty data cells
+
+        # Relationships
+            * One to One - You -> SSN
+            * One to Many -  Users -> Todo 
+            * Many to Many - User -> Product (Marketplaces)
+
+    # Non-Relational - MongoDB
+        * Collections = [...]
+        * Document = {...}
+
+        User {
+            name: String
+            age: Number
+            _id: 
+        }
+        Todo {
+            title: string
+            _id: created by DB
+            user: user._id
+        }
+
+
+# Mongoose
+    * Enforces data rigidity for non-relational information in MongoDB
 # Connecting the Front-end to the Backend
     # Folder Structure
     # Proxy
@@ -118,4 +157,5 @@ a# Frontend
     });
 
 # Links:
-    nodejs.org/api/
+    * nodejs.org/api/
+    * Launch Command - mongod --config /home/linuxbrew/.linuxbrew/etc/mongod.conf

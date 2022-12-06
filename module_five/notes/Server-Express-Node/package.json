@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "mongoose": "^6.8.0",
+    "mongoose-morgan": "^1.0.17",
+    "morgan": "^1.10.0",
+    "save": "^2.9.0"
+  }
+}

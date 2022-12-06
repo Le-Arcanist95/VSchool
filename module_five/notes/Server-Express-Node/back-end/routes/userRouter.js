@@ -11,53 +11,84 @@ const users = [
     { name: "Fairy", age: 999, _id: uuidv4()}
 ];
 
+function errorHandler(target) {
+    if (!target) {
+        const error = new Error("Target was not found.");
+        next(error);
+    };
+};
+
 //Routes
 userRouter.route('/')
-    .get((req, res) => {
-        res.send(users);
+    .get((req, res, next) => {
+        res.status(200).send(users);
     })
-    .post((req, res) => {
+    .post((req, res, next) => {
         const newUser = req.body;
         newUser._id = uuidv4();
         users.push(newUser);
-        res.send(newUser);
+        res.status(201).send(newUser);
     });   
 
-userRouter.route('/:userId')
-    .get((req, res) => {
-        res.send(users.find(user => user._id === req.params.userId))
-    })
-    .put((req, res) => {
-        const userId = req.params.userId;
-        const userIndex = users.findIndex(user => user._id === userId);
-        const updatedUser = Object.assign(users[userIndex], req.body);
-        res.send(updatedUser);
-    })
-    .delete((req, res) => {
-        const userId = req.params.userId;
-        const userIndex = users.findIndex(user => user._id === userId);
-        users.splice(userIndex, 1)
-        res.send('Successfully deleted the selected user.')
-    });
-
-userRouter.get('/search', (req, res) => {
+userRouter.get('/search', (req, res, next) => {
     const query = req.query;
     let filteredUsers = [];
     
     function filter(query) {
-        if(query.name) {
-            return filteredUsers = users.filter(item => item.name === query.name);
+        if (!Object.keys(query).includes("name" || "age" || "_id")) {
+            const error = new Error("You must provide a proper query object");
+            res.status(500);
+            return next(error);
+        }
+        else if (query.name) {
+            return filteredUsers = users.filter(user => user.name === query.name);
         } 
         else if (query.age) {
-            return filteredUsers = users.filter(item => item.age === query.age);
+            return filteredUsers = users.filter(user => user.age === query.age);
         } 
         else if (query._id) {
-            return filteredUsers = users.filter(item => item._id == query._id)
+            return filteredUsers = users.filter(user => user._id == query._id)
         };
     };
     filter(query);
 
-    res.send(filteredUsers)
+    res.status(200).send(filteredUsers)
 });
+
+userRouter.route('/:userId')
+    .get((req, res, next) => {
+        const userId = req.params.userId
+        const foundUser = users.find(user => user._id === userId);
+        if (!foundUser) {
+            const error = new Error(`User ID #${userId} was not found.`);
+            res.status(500);
+            return next(error);
+        };
+        res.status(200).send(foundUser);
+    })
+    .put((req, res, next) => {
+        const userId = req.params.userId;
+        const foundUser = users.find(user => user._id === userId);
+        const userIndex = users.findIndex(user => user._id === userId);
+        if (!foundUser) {
+            const error = new Error(`User ID #${userId} could not be updated. It does not exist.`)
+            res.status(500)
+            return next(error);
+        }
+        const updatedUser = Object.assign(users[userIndex], req.body);
+        res.status(201).send(updatedUser);
+    })
+    .delete((req, res, next) => {
+        const userId = req.params.userId;
+        const foundUser = users.find(user => user._id === userId);
+        const userIndex = users.findIndex(user => user._id === userId);
+        if (!foundUser) {
+            const error = newError(`User ID #${userId} could not be deleted. It does not exist.`)
+            res.status(404)
+            return next(error);
+        }
+        users.splice(userIndex, 1)
+        res.status(200).send('Successfully deleted the selected user.')
+    });
 
 module.exports = userRouter;
