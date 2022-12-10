@@ -29,7 +29,7 @@ function App() {
     function editUser(updates, userId) {
         Axios.put(`/users/${userId}`, updates)
             .then(res => {
-                console.log(res)
+                console.log(res);
                 setUsers(prevUsers => prevUsers.map(user => user._id !== userId ? user : res.data))
             })
             .catch(err => console.log(err.response.data.errMsg));
@@ -41,7 +41,10 @@ function App() {
 
     return (
         <div>
-            <AddUserForm submit={addUser} />
+            <AddUserForm 
+                submit={addUser}
+                btnText="Submit"
+            />
             { users.map(user => 
                 <User 
                     {...user} 

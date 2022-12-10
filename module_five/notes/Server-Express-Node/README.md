@@ -155,7 +155,15 @@ a# Frontend
     * app.listen(port, () => {
         console.log(`Express app is listening on port ${port}`);
     });
-
+# MongoDB Commands
+    * sudo systemctl start mongod
+    * sudo systemctl stop mongod
+    * sudo systemctl restart mongod
+    * 'https://cloud.mongodb.com/freemonitoring/cluster/ZIRPIKYL6BV4YCRMWQQK4AV2AVINLJAD'
+# Mongoose Schemes
+    *    Blueprints for our data
+# Mongoose Models
+    * Models have a Name, and a Blueprint (Schema)
+    * Models are used to perform the CRUD operations on data created with the Model
 # Links:
     * nodejs.org/api/
-    * Launch Command - mongod --config /home/linuxbrew/.linuxbrew/etc/mongod.conf
