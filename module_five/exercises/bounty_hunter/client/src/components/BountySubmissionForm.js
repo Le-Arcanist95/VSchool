@@ -7,7 +7,7 @@ export default function BountySubmissionForm(props) {
         lName: props.lName || "",
         living: props.living || false,
         reward: props.reward || "",
-        faction: props.type || ""
+        faction: props.faction || ""
     };
     
     // Set state with initial object as default
