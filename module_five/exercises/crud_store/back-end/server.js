@@ -15,10 +15,13 @@ mongoose.set('strictQuery', false);
 mongoose.connect('mongodb://localhost:27017/crud-store-db', () => console.log("Connected to the Database."));
 
 // Routes
-
+app.use( '/inventory', require('./routes/inventory.js'));
 
 // Error Handler
-
+app.use((err, req, res, next) => {
+    console.log(err);
+    return res.status(404).send({errMsg: err.message});
+});
 
 // Port and Server Listen
 const port = process.env.PORT || 5000;
