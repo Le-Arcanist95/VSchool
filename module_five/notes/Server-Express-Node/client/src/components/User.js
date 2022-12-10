@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Axios from "axios";
 import Pet from "./Pet.js";
-import AddUserForm from "./AddUserForm.js";
+import AddUserForm from "./NewSubmissionForm.js";
 
 export default function User(props) {
     const [petData, setPetData] = useState([]);

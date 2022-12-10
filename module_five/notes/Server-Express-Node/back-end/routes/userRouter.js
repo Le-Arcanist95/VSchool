@@ -24,17 +24,8 @@ userRouter.route('/')
         });
     });   
 
-userRouter.get('/search/age', (req, res, next) => {
-    User.find({age: req.query.age}, (err, users) => {
-        if (err) {
-            res.status(500);
-            return next(err);
-        };
-        return res.status(200).send(users);
-    });
-});
-
-userRouter.route('/:userId')
+    
+    userRouter.route('/:userId')
     .get((req, res, next) => {
         User.findById({_id: req.params.userId}, (err, foundUser) => {
             if (err) {
@@ -55,7 +46,7 @@ userRouter.route('/:userId')
                     return next(err);
                 };
                 return res.status(201).send(updatedUser);
-        })
+            })
     })
     .delete((req, res, next) => {
         User.findOneAndDelete({_id: req.params.userId}, (err, deletedUser) => {

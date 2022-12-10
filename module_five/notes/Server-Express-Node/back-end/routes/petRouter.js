@@ -1,79 +1,63 @@
 const express = require('express');
-const { v4: uuidv4 } = require('uuid');
 const petRouter = express.Router();
-
-// Fake Data
-const pets = [
-    { 
-        name: "Rusty" , 
-        breed: "Golden Retriever", 
-        owner: "Harry",
-        _id: uuidv4()
-    },
-    { 
-        name: "Rufus", 
-        breed: "Labrador", 
-        owner: "Barry",
-        _id: uuidv4()
-    },
-    { 
-        name: "Raggy", 
-        breed: "Unknown", 
-        owner: "Fairy",
-        _id: uuidv4()
-    }
-]
+const Pet = require('../models/pet.js');
 
 // Routes
 petRouter.route('/')
-    .get((req, res) => {
-        res.send(pets);
+    .get((req, res, next) => {
+        Pet.find((err, pets) => {
+            if (err) {
+                res.status(500);
+                return next(err);
+            };
+            return res.status(200).send(pets);
+        });
     })
-    .post((req, res) => {
-        const newPet = req.body;
-        newPet._id = uuidv4();
-        pets.push(newPet);
-        res.send(`Successfully added ${req.body.name} to the database.`);
-    });
+
+petRouter.route('/:userId')
+    .post((req, res, next) => {
+        req.body.owner = req.params.userId
+        const newPet = new Pet(req.body)
+        newPet.save((err, pets) => {
+            if (err) {
+                res.status(500);
+                return next(err);
+            };
+            return res.status(201).send(newPet);
+        });
+    });   
 
 petRouter.route('/:petId')
-    .get((req, res) => {
-        res.send(pets.find(pet => pet._id === req.params.petId))
+    .get((req, res, next) => {
+        User.findById({_id: req.params.petId}, (err, foundPet) => {
+            if (err) {
+                res.status(500);
+                return next(err);
+            };
+            return res.status(200).send(foundPet);
+        })
     })
-    .put((req, res) => {
-        const petId = req.params.petId;
-        const petIndex = pets.findIndex(pet => pet._id === petId);
-        const updatedPet = Object.assign(pets[petIndex], req.body);
-        res.send(updatedPet);
+    .put((req, res, next) => {
+        User.findOneAndUpdate(
+            {_id: req.params.petId}, // Find this ID to update
+            req.body, // Update the object with this data
+            { new: true }, // Send back the updated version
+            (err, updatedPet) => {
+                if (err) {
+                    res.status(500);
+                    return next(err);
+                };
+                return res.status(201).send(updatedPet);
+            })
     })
-    .delete((req, res) => {
-        const petId = req.params.petId
-        const petIndex = pets.findIndex(pet => pet._id === petId);
-        pet.splice(petIndex, 1)
-        res.send('Successfully deleted the selected pet.')
+    .delete((req, res, next) => {
+        User.findOneAndDelete({_id: req.params.userId}, (err, deletedPet) => {
+            if (err) {
+                res.status(500);
+                return next(err);
+            };
+            return res.status(200).send(`Successfully removed pet ${deletedPet.name} from the database.`)
+        });
     });
-
-petRouter.get('/search', (req, res) => {
-    const query = req.query;
-    let filteredPets = [];
-    
-    function filter(query) {
-        if(query.name) {
-            return filteredPets = pets.filter(pet => pet.name === query.name);
-        } 
-        else if (query.age) {
-            return filteredPets = pets.filter(pet => pet.breed === query.breed);
-        } 
-        else if (query.owner) {
-            return filteredPets = pets.filter(pet => pet.owner = query.owner)
-        }
-        else if (query._id) {
-            return filteredPets = pets.filter(pet => pet._id == query._id)
-        };
-    };
-    filter(query);
-
-    res.send(filteredPets)
-});
 
 module.exports = petRouter;

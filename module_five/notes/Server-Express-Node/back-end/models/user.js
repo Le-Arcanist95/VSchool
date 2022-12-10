@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema
+const Schema = mongoose.Schema;
 
 // User Blueprint
     const userSchema = new Schema({
@@ -10,14 +10,6 @@ const Schema = mongoose.Schema
         age: {
             type: Number,
             required: true
-        },
-        pets: {
-            type: [{
-                name: String,
-                breed: String,
-                owner: String
-            }],
-            required: false
         }
     });
 

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import User from "./components/User.js";
-import AddUserForm from "./components/AddUserForm.js";
+import NewSubmissionForm from "./components/NewSubmissionForm.js";
 
 function App() {
     const [users, setUsers] = useState([]);
@@ -12,7 +12,8 @@ function App() {
             .catch(err => console.log(err.response.data.errMsg));
     };
 
-    function addUser(newUser) {
+    function addUser(newUser, type) {
+        console.log(type);
         Axios.post("/users", newUser)
             .then(res => {
                 setUsers(prevUsers => [...prevUsers, res.data]);
@@ -41,7 +42,7 @@ function App() {
 
     return (
         <div>
-            <AddUserForm 
+            <NewSubmissionForm
                 submit={addUser}
                 btnText="Submit"
             />
