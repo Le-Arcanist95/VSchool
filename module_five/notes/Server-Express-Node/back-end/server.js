@@ -22,8 +22,11 @@ app.use(morgan('dev')); // Logs requests to the console
 // });
 
 // Connect to DB
+const uri = "mongodb+srv://Lev_Arcanist:"
+             + encodeURIComponent("p!=Mb6S&B(XBX,b[5S#e") 
+             + "@cluster0.l1qvvqg.mongodb.net/?retryWrites=true&w=majority";
 mongoose.set('strictQuery', false);
-mongoose.connect('mongodb://localhost:27017/notesdb', () => console.log("Connected to the Database"));
+mongoose.connect(uri, () => console.log("Connected to the Database"));
 
 
 // Routes
