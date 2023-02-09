@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useState } from "react";
 import axiosClient from "../hooks/useAxios";
 
 const AuthContext = createContext();
@@ -10,22 +10,28 @@ export const AuthProvider = ({ children }) => {
     }
     const [userState, setUserState] = useState(initState);
 
-    function register(credentials) {
+    const register = (credentials) => {
         axiosClient.post("/auth/register", credentials)
             .then(res => {
                 setUserState({...userState, user: res.data.user});
             })
-            .catch(err => console.log(err));
+            .catch(err => console.dir(err));
     };
 
-    useEffect(() => {
-        console.log(userState);
-    }, [userState]);
+    const login = (credentials) => {
+       axiosClient.post("/auth/login", credentials)
+            .then(res => {
+                setUserState({...userState, user: res.data.user, token: res.data.accessToken});
+                setTimeout(() => {console.log(userState)}, 2000);
+            })
+            .catch(err => console.log(err.response));
+    };
 
     return (
         <AuthContext.Provider value={{
             ...userState,
-            register
+            register,
+            login
         }}>
             {children}
         </AuthContext.Provider>

@@ -588,8 +588,20 @@ video {
   height: 4rem;
 }
 
+.h-8 {
+  height: 2rem;
+}
+
 .w-full {
   width: 100%;
+}
+
+.w-8 {
+  width: 2rem;
+}
+
+.flex-shrink-0 {
+  flex-shrink: 0;
 }
 
 .cursor-pointer {

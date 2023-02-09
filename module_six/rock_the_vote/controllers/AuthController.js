@@ -3,8 +3,8 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
 // Signup
-exports.register = async (req, res, next) => {
-    User.findOne({username: req.body.username}, (err, user) => {
+exports.register = (req, res, next) => {
+    User.findOne({username: req.body.username.toLowerCase()}, (err, user) => {
         const {username, password} = req.body;
         if(err){
             res.status(500);
@@ -34,29 +34,21 @@ exports.register = async (req, res, next) => {
 };
 
 // Login
-exports.login = async (req, res, next) => {
-    const {username, password} = req.body;
-    if(!username || !password){
-        res.status(403);
-        return next(new Error('Username and password are required'));
-    }
-
-    User.findOne({username: username}, async(err, user) => {
+exports.login = (req, res, next) => {
+    User.findOne({ username: req.body.username.toLowerCase() }, (err, user) => {
         if(err){
             res.status(500);
             return next(err);
         }
-
-        const isMatch = await bcrypt.compare(password, user.password);
         if(!user){
             res.status(403);
             return next(new Error('Username or password are incorrect'));
         }
-        if(!isMatch){
+        if(!bcrypt.compareSync(req.body.password, user.password)){
             res.status(403);
             return next(new Error('Username or password are incorrect'));
-        } 
-        
+        }
+         
         const accessToken = jwt.sign(user.toObject(), process.env.ACCESS_TOKEN_SECRET, {expiresIn: '1d'});            
         return res.status(200).send({ accessToken, user });
     });

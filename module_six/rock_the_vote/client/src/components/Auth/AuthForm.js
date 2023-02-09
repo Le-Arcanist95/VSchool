@@ -1,6 +1,7 @@
 import React from 'react';
 
 export default function AuthForm(props) {
+    // Destructure props
     const { 
         handleChange, 
         handleSubmit, 
@@ -10,13 +11,14 @@ export default function AuthForm(props) {
             repeatPassword,
             email
         },
-        isLogin,
-        toggle
+        toggleVal,
+        handleToggle
     } = props;
-
+    
+    // Render JSX with ternary to display login or register form.
     return (
         <div className="flex flex-col items-center justify-center h-screen">
-            {isLogin ? (
+            {toggleVal ? (
                 <>
                     <form onSubmit={handleSubmit} className="flex flex-col items-center justify-center">
                         <input
@@ -39,7 +41,7 @@ export default function AuthForm(props) {
                     </form>
                     <p className="mt-4">
                         Don't have an account?
-                        <span className="text-blue-500 cursor-pointer" onClick={toggle}> Register </span>
+                        <span className="text-blue-500 cursor-pointer" onClick={handleToggle}> Register </span>
                     </p>
                 </>
             ) : (
@@ -81,7 +83,7 @@ export default function AuthForm(props) {
                     </form>
                     <p className="mt-4">
                         Already have an account?{" "}
-                        <span className="text-blue-500 cursor-pointer" onClick={toggle}> Login </span>
+                        <span className="text-blue-500 cursor-pointer" onClick={handleToggle}> Login </span>
                     </p>
                 </>
             )}

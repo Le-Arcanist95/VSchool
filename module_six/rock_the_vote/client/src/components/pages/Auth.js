@@ -6,52 +6,39 @@ const initInputs = { username: "", password: "", repeatPassword: "", email: "" }
 
 export default function Access() {
     // State for login or register
-    const { register } = useContext(AuthContext);
+    const { register, login } = useContext(AuthContext);
     const [inputData, setInputData] = useState(initInputs);
     const [isLogin, setIsLogin] = useState(false);
 
-    
+    // Handle input change    
     const handleChange = (e) => {
         const { name, value } = e.target;
         setInputData(prevInputs => ({ ...prevInputs, [name]: value }));
     }
+    // Toggle between login and register -- handles setting state for nested ternary.
     const handleToggle = () => {
         setIsLogin(prevState => !prevState);
     };
+    // Handle submit for login and register 
     const handleLogin = (e) => {
         e.preventDefault();
-        console.log("login");
+        login(inputData);
     }
     const handleRegister = (e) => {
         e.preventDefault();
         register(inputData);
     }
 
+    // Render JSX with ternary for AuthForm component to handle login and register forms.
     return (
         <div className="flex flex-col items-center justify-center h-screen">
-            <h1 className="text-4xl font-bold mb-4">Rock the Vote!</h1>
-            {isLogin ? (
-                <>
-                    <AuthForm
-                        handleChange={handleChange}
-                        handleSubmit={handleLogin}
-                        inputs={inputData}
-                        isLogin={isLogin}
-                        toggle={handleToggle}
-                    />
-                </>
-            ) : (
-                <>
-                    <AuthForm
-                        handleChange={handleChange}
-                        handleSubmit={handleRegister}
-                        inputs={inputData}
-                        isLogin={isLogin}
-                        setIsLogin={setIsLogin}
-                        toggle={handleToggle}
-                    />
-                </>
-            )}
+            <AuthForm
+                handleChange={handleChange}
+                handleSubmit={isLogin ? handleLogin : handleRegister}
+                inputs={inputData}
+                toggleVal={isLogin}
+                handleToggle={handleToggle}
+            />
         </div>
     );
 };
