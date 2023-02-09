@@ -57,7 +57,7 @@ exports.login = async (req, res, next) => {
             return next(new Error('Username or password are incorrect'));
         } 
         
-        const accessToken = jwt.sign(user.toObject(), process.env.ACCESS_TOKEN_SECRET);            
+        const accessToken = jwt.sign(user.toObject(), process.env.ACCESS_TOKEN_SECRET, {expiresIn: '1d'});            
         return res.status(200).send({ accessToken, user });
     });
 };
