@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt');
 // Signup
 exports.register = (req, res, next) => {
     User.findOne({username: req.body.username.toLowerCase()}, (err, user) => {
-        const {username, password} = req.body;
+        const {username, password, email} = req.body;
         if(err){
             res.status(500);
             return next(err);
@@ -22,7 +22,7 @@ exports.register = (req, res, next) => {
         try {
             const salt = bcrypt.genSaltSync(10);
             const hash = bcrypt.hashSync(password, salt);
-            const newUser = new User({username: username, password: hash});
+            const newUser = new User({username: username, password: hash, email: email});
             newUser.save();
             return res.status(201).send({user: newUser});
         }

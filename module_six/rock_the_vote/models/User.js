@@ -12,6 +12,12 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
+    email: {
+        type: String,
+        required: true,
+        lowercase: true,
+        unique: true
+    },
     memberSince: {
         type: Date,
         default: Date.now
