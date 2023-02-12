@@ -5,7 +5,7 @@ export default function AuthForm(props) {
     const { 
         handleChange, 
         handleSubmit, 
-        inputs: {
+        inputData: {
             username,
             password,
             repeatPassword,

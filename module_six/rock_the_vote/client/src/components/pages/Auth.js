@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react';
+import { Navigate } from 'react-router-dom';
 import AuthContext from "../../context/AuthProvider";
 import AuthForm from "../Auth/AuthForm.js";
 
@@ -9,14 +10,17 @@ export default function Auth() {
     const { register, login } = useContext(AuthContext);
     const [inputData, setInputData] = useState(initInputs);
     const [isLogin, setIsLogin] = useState(true);
+    const [redirectToHome, setRedirectToHome] = useState(false);
 
     // Check if user is logging in or registering and call the appropriate function
     const handleSubmit = (e) => {
         e.preventDefault();
         if (isLogin) {
             login(inputData);
+            setRedirectToHome(true);
         } else {
             register(inputData);
+            setIsLogin(true);
         }
     };
     // Handle input change    
@@ -32,12 +36,13 @@ export default function Auth() {
     // Render JSX with ternary for AuthForm component to handle login and register forms.
     return (
         <div className="flex flex-col items-center justify-center h-screen">
+            {redirectToHome ? <Navigate to="/home" /> : null}
             <AuthForm
                 handleChange={handleChange}
                 handleSubmit={handleSubmit}
-                inputs={inputData}
-                toggleVal={isLogin}
                 handleToggle={handleToggle}
+                inputData={inputData}
+                toggleVal={isLogin}
             />
         </div>
     );

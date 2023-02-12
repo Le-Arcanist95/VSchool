@@ -7,6 +7,7 @@ export default function Layout() {
     return (
         <div>
             <Header />
+            <hr className='shadow-lg'/>
             <Outlet />
             <Footer />
         </div>

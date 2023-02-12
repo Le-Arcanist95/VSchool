@@ -1,5 +1,5 @@
 // Import pre-built and custom hooks
-import { createContext, useState, useReducer, useCallback, useEffect } from "react";
+import { createContext, useState, useReducer, useCallback } from "react";
 import { issueReducer, initialIssueData } from "../hooks/useIssueReducer";
 import { voteReducer, initialVoteData } from "../hooks/useVoteReducer";
 import axiosClient from "../hooks/useAxios";

@@ -1,10 +1,19 @@
 import axios from "axios";
 
 const SERVER_URL = "http://localhost:9000/";
-const axiosClient = axios.create({
+
+export const axiosClient = axios.create({
     baseURL: SERVER_URL,
-    headers: { 'Content-Type': 'application/json' },
+    headers: {
+        "Content-type": "application/json",
+    },
     withCredentials: true
 });
-
-export default axiosClient;
+export const axiosClientPrivate = axios.create({
+    baseURL: SERVER_URL,
+    headers: {
+        "Content-type": "application/json",
+        "Authorization": `Bearer ${localStorage.getItem("accessToken")}`
+    },
+    withCredentials: true
+});
