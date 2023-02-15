@@ -1,26 +1,28 @@
-const initialIssueData = {
-    issue: {
+const initialIssueData = [
+    {
         title: '',
         description: '',
         status: '',
-        type: '',
         votes: 0,
     }
-};
+];
 
 const issueReducer = (state, action) => {
     switch (action.type) {
-        case 'changeValue':
-            return { ...state, [action.name]: action.value };
-        case 'up':
-            return { votes: state.votes + 1 };
-        case 'down':
-            return { votes: state.votes - 1 };
-        case 'reset':
-            return initialIssueData;
+        case "GET_ISSUES":
+            return action.payload;
+        case 'ADD_ISSUE':
+            return [...state, action.payload];
+        case 'UPDATE_ISSUE':
+            return {
+                ...state,
+                [action.payload._id]: action.payload
+            };
+        case 'DELETE_ISSUE':
+            return state.filter(issue => issue._id !== action.payload._id);
         default:
-            throw new Error();
-    };
-}
+            throw new Error(`Unhandled action type: ${action.type}`);
+    }
+};
 
 export { initialIssueData, issueReducer };

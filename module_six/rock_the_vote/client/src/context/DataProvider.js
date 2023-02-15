@@ -1,8 +1,7 @@
 // Import pre-built and custom hooks
-import { createContext, useState, useReducer, useCallback } from "react";
+import { createContext, useState, useReducer, useCallback, useEffect } from "react";
 import { issueReducer, initialIssueData } from "../hooks/useIssueReducer";
-import { voteReducer, initialVoteData } from "../hooks/useVoteReducer";
-import axiosClient from "../hooks/useAxios";
+import { axiosClientPrivate } from "../hooks/useAxios";
 
 // Create context
 const DataContext = createContext();
@@ -11,49 +10,111 @@ const DataContext = createContext();
 export const DataProvider = ({ children }) => {
     // State
     const [issue, issueDispatch] = useReducer(issueReducer, initialIssueData);
-    const [votes, voteDispatch] = useReducer(voteReducer, initialVoteData);
     const [issues, setIssues] = useState([]);
     const [comments, setComments] = useState([]);
-    const [search, setSearch] = useState('');
     
     // Get all issues from database
     const getIssues = useCallback(async () => {
-        await axiosClient.get("/issues")
+        await axiosClientPrivate.get("/issue")
             .then(res => {
                 setIssues(res.data);
             })
             .catch(err => console.log(err));
     }, []);
 
+    // Add new issue to database
+    const addIssue = useCallback(async (issue) => {
+        await axiosClientPrivate.post("/issue", issue)
+            .then(res => {
+                issueDispatch({type: "ADD_ISSUE", payload: res.data});
+                getIssues();
+                console.log(issue)
+            })
+            .catch(err => console.log(err));
+    }, [getIssues]);
+
+    // Update issue in database
+    const updateIssue = useCallback(async (issue) => {
+        await axiosClientPrivate.put(`/issue/${issue._id}`, issue)
+            .then(res => {
+                issueDispatch({type: "UPDATE_ISSUE", payload: res.data});
+                getIssues();
+            })
+            .catch(err => console.log(err));
+    }, [getIssues]);
+
+    // Delete issue from database
+    const deleteIssue = useCallback(async (id) => {
+        await axiosClientPrivate.delete(`/issue/${id}`)
+            .then(res => {
+                issueDispatch({type: "DELETE_ISSUE", payload: res.data});
+                getIssues();
+            })
+            .catch(err => console.log(err));
+    }, [getIssues]);
+
     // Get all comments from database
     const getComments = useCallback(async () => {
-        await axiosClient.get("/comments")
+        await axiosClientPrivate.get("/comment")
             .then(res => {
                 setComments(res.data);
             })
             .catch(err => console.log(err));
     }, []);
 
+    // Add new comment to database
+    const addComment = useCallback(async (comment, issueId) => {
+        await axiosClientPrivate.post("/comment", comment, {params: {issueId}})
+            .then(res => {
+                setComments(prevComments => [...prevComments, res.data]);
+            })
+            .catch(err => console.log(err));
+    }, []);
+
+    // Upvote Issue
+    const upvoteIssue = useCallback(async (id) => {
+        await axiosClientPrivate.put(`/issue/upvote/${id}`)
+            .then(res => {
+                issueDispatch({type: "UPVOTE_ISSUE", payload: res.data});
+                getIssues();
+            })
+            .catch(err => console.log(err));
+    }, [getIssues]);
+
+    // Downvote Issue
+    const downvoteIssue = useCallback(async (id) => {
+        await axiosClientPrivate.put(`/issue/downvote/${id}`)
+            .then(res => {
+                issueDispatch({type: "DOWNVOTE_ISSUE", payload: res.data});
+                getIssues();
+            })
+            .catch(err => console.log(err));
+    }, [getIssues]);
+
     // Populate issues and comments on page load
-    // useEffect(() => {
-    //     getIssues();
-    //     getComments();
-    // }, [getIssues, getComments]);
+    useEffect(() => {
+        if(localStorage.getItem("accessToken")) {
+            getIssues();
+            getComments();
+        }   
+    }, [getIssues, getComments]);
 
     return (
         <DataContext.Provider value={{
                 issue, 
-                issueDispatch, 
-                votes, 
-                voteDispatch, 
+                issueDispatch,
                 issues, 
                 setIssues, 
                 comments, 
-                setComments, 
-                search, 
-                setSearch,
+                setComments,
                 getIssues,
-                getComments
+                getComments,
+                addIssue,
+                updateIssue,
+                deleteIssue,
+                addComment,
+                upvoteIssue,
+                downvoteIssue
             }}>
             {children}
         </DataContext.Provider>

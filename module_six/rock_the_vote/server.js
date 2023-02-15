@@ -22,6 +22,8 @@ mongoose.connect(MONGO_URI, () => console.log('Connected to the DB'));
 app.use('/auth', require('./routes/authRouter.js'));
 app.use('/api', expressjwt({secret: process.env.ACCESS_TOKEN_SECRET, algorithms: ['HS256']}));
 app.use('/api/issue', require('./routes/issueRouter.js'));
+app.use('/api/issue/upvote', require('./routes/upvoteRouter.js'));
+app.use('/api/issue/downvote', require('./routes/downvoteRouter.js'));
 app.use('/api/comment', require('./routes/commentRouter.js'));
 app.use('/api/user', require('./routes/userRouter.js'));
 

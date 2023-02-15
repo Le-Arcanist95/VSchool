@@ -18,6 +18,7 @@ exports.addComment = (req, res, next) => {
     newComment.save((err, savedComment) => {
         if(err){
             res.status(500)
+            console.log(err)
             return next(err)
         }
         return res.status(201).send(savedComment)
@@ -63,7 +64,7 @@ exports.deleteComment = (req, res, next) => {
                 res.status(500)
                 return next(err)
             }
-            return res.status(200).send(`Successfully deleted comment ${deletedComment.title} from the database!`)
+            return res.status(200).send(`Successfully deleted comment from the database!`)
         }
     )
 }

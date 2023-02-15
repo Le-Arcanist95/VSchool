@@ -7,11 +7,25 @@ const issueSchema = new Schema({
     required: true
   },
   description: {
-    type: String
+    type: String,
+    required: true
+  },
+  upvotes: {
+    type: Array,
+    default: []
+  },
+  downvotes: {
+    type: Array,
+    default: []
   },
   votes: {
     type: Number,
-    default: 0
+    default: 0,
+    min: 0
+  },
+  resolved: {
+    type: Boolean,
+    default: false
   },
   user: {
     type: Schema.Types.ObjectId,

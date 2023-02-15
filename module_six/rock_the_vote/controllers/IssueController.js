@@ -1,4 +1,5 @@
-const Issue = require('../models/Issue.js')
+const Issue = require('../models/Issue.js');
+const { deleteComment } = require('../controllers/CommentController.js');
 
 // Get All Todos
 exports.getAllIssues = (req, res, next) => {
@@ -54,7 +55,7 @@ exports.updateIssue = (req, res, next) => {
     )
 }
 
-// Delete Issue
+// Delete Issue -- also deletes all comments associated with the issue
 exports.deleteIssue = (req, res, next) => {
     Issue.findOneAndDelete(
         { _id: req.params.issueId, user: req.auth._id },
@@ -63,7 +64,8 @@ exports.deleteIssue = (req, res, next) => {
                 res.status(500)
                 return next(err)
             }
-            return res.status(200).send(`Successfully delete issue: ${deletedIssue.title}`)
+            deleteComment(deletedIssue._id)
+            return res.status(200).send(`Successfully deleted issue ${deletedIssue.title} from the database`)
         }
     )
 }
