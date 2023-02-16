@@ -5,7 +5,6 @@ export default function CommentForm({ issueId }) {
     const { addComment } = useContext(DataContext);
     const [inputs, setInputs] = React.useState({
         comment: "",
-        issue: issueId
     });
 
     const handleChange = (e) => {
@@ -15,8 +14,7 @@ export default function CommentForm({ issueId }) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        addComment(inputs);
-        setInputs({comment: "", issue: issueId});
+        addComment(issueId, inputs);
     }
 
     return (

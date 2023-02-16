@@ -1,11 +1,9 @@
 import React, { useContext } from 'react';
 import AuthContext from '../../context/AuthProvider.js';
-import DataContext from '../../context/DataProvider.js';
-import Issue from '../Issues/Issue.js';
+import IssueList from '../Issues/IssueList.js';
 
 export default function Home() {
     const { accessToken } = useContext(AuthContext);
-    const { issues } = useContext(DataContext);
 
     // Render JSX with ternary for displaying issues and comments from database if user is logged in. If not, display a message to describe the app.
     return (
@@ -14,7 +12,7 @@ export default function Home() {
                 <div className="flex flex-col items-center justify-center h-fit">
                     <h1 className="text-3xl font-bold">Issues</h1>
                     <div className="flex flex-col items-center justify-center h-fit">
-                        {issues.map((issue) => <Issue key={issue._id} issue={issue} />)}
+                        <IssueList />
                     </div>
                 </div>
             ) : (

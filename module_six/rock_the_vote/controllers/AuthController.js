@@ -24,7 +24,7 @@ exports.register = (req, res, next) => {
             const hash = bcrypt.hashSync(password, salt);
             const newUser = new User({username: username, password: hash, email: email});
             newUser.save();
-            return res.status(201).send({user: newUser});
+            return res.status(201).send({user: newUser.withoutPassword()});
         }
         catch(err){
             res.status(500);
@@ -49,7 +49,7 @@ exports.login = (req, res, next) => {
             return next(new Error('Username or password are incorrect'));
         }
          
-        const accessToken = jwt.sign(user.toObject(), process.env.ACCESS_TOKEN_SECRET, {expiresIn: '1d'});            
-        return res.status(200).send({ accessToken, user });
+        const accessToken = jwt.sign(user.withoutPassword(), process.env.ACCESS_TOKEN_SECRET, {expiresIn: '1d'});            
+        return res.status(200).send({ accessToken, user: user.withoutPassword() });
     });
 };

@@ -11,21 +11,24 @@ const issueSchema = new Schema({
     required: true
   },
   upvotes: {
-    type: Array,
+    type: [String],
     default: []
   },
   downvotes: {
-    type: Array,
+    type: [String],
     default: []
-  },
-  votes: {
-    type: Number,
-    default: 0,
-    min: 0
   },
   resolved: {
     type: Boolean,
     default: false
+  },
+  comments: {
+    type: Array,
+    prefixItems: {
+      type: Schema.Types.ObjectId,
+      ref: "Comment"
+    },
+    default: []
   },
   user: {
     type: Schema.Types.ObjectId,
