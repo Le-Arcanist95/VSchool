@@ -14,7 +14,7 @@ export const AuthProvider = ({ children }) => {
 
     const handleAuthErr = (err) => {
         setErrMsg(err.response.data.errMsg);
-        setTimeout(() => setErrMsg(""), 5000);
+        setTimeout(() => setErrMsg(""), 10000);
     };
 
     const register = (credentials) => {

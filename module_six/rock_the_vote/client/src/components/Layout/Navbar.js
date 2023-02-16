@@ -9,11 +9,9 @@ export default function Navbar() {
     if (user) {
         return (
             <nav className="flex justify-between items-center h-16 text-black relative font-mono" role="navigation">
-                <NavLink to="/home" className="mx-1 text-lg bg-zinc-800 text-neutral-200 p-4 rounded-lg w-1/5 shadow-lg">Home</NavLink>
-                <NavLink to="/profile" className="mx-1 text-lg bg-zinc-800 text-neutral-200 p-4 rounded-lg w-1/5 shadow-lg">Profile</NavLink>
-                <NavLink to="/about" className="mx-1 text-lg bg-zinc-800 text-neutral-200 p-4 rounded-lg w-1/5 shadow-lg">About</NavLink>
-                <NavLink to="/contact" className="mx-1 text-lg bg-zinc-800 text-neutral-200 p-4 rounded-lg w-1/5 shadow-lg">Contact</NavLink>
-                <NavLink to="/auth/login" className="mx-1 text-lg bg-zinc-800 text-neutral-200 p-4 rounded-lg w-1/5 shadow-lg" onClick={logout}>Logout</NavLink>
+                <NavLink to="/home" className="mx-1 text-lg bg-zinc-800 text-neutral-200 p-4 rounded-lg w-1/3 shadow-lg">Home</NavLink>
+                <NavLink to="/profile" className="mx-1 text-lg bg-zinc-800 text-neutral-200 p-4 rounded-lg w-1/3 shadow-lg">Profile</NavLink>
+                <NavLink to="/auth/login" className="mx-1 text-lg bg-zinc-800 text-neutral-200 p-4 rounded-lg w-1/3 shadow-lg" onClick={logout}>Logout</NavLink>
             </nav>
         )
     } else {
