@@ -12,14 +12,17 @@ export default function AuthForm(props) {
             email
         },
         toggleVal,
-        handleToggle
+        handleToggle,
+        errMsg
     } = props;
     
     // Render JSX with ternary to display login or register form.
+    // Add Error Message if there is one. Use tailwind css classes to smooth out transition when message appears and disappears.
     return (
         <div className="flex flex-col items-center justify-center h-screen">
             {toggleVal ? (
                 <>
+                    {errMsg ? <p className="text-red-500 text-center mb-4 transition-all duration-500">{errMsg}</p> : null}
                     <form onSubmit={handleSubmit} className="flex flex-col items-center justify-center">
                         <input
                             type="text"
@@ -46,6 +49,7 @@ export default function AuthForm(props) {
                 </>
             ) : (
                 <>
+                    {errMsg ? <p className="text-red-500 text-center mb-4 transition-all duration-500">{errMsg}</p> : null}
                     <form onSubmit={handleSubmit} className="flex flex-col items-center justify-center">
                         <input
                             type="text"

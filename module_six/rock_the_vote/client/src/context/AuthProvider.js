@@ -9,6 +9,13 @@ export const AuthProvider = ({ children }) => {
         accessToken: localStorage.getItem("accessToken") || "",
     }
     const [userState, setUserState] = useState(initState);
+    const [errMsg, setErrMsg] = useState("");
+    const [redirect, setRedirect] = useState(false);
+
+    const handleAuthErr = (err) => {
+        setErrMsg(err.response.data.errMsg);
+        setTimeout(() => setErrMsg(""), 5000);
+    };
 
     const register = (credentials) => {
         axiosClient.post("/auth/register", credentials)
@@ -18,8 +25,9 @@ export const AuthProvider = ({ children }) => {
                 localStorage.setItem("user", JSON.stringify(user));
                 localStorage.setItem("accessToken", accessToken);
                 setUserState({...userState, user, accessToken});
+                setRedirect(true);
             })
-            .catch(err => console.log(err.response));
+            .catch(err => handleAuthErr(err));
     };
 
     const login = (credentials) => {
@@ -29,8 +37,9 @@ export const AuthProvider = ({ children }) => {
                 localStorage.setItem("user", JSON.stringify(user));
                 localStorage.setItem("accessToken", accessToken);
                 setUserState({...userState, user, accessToken});
+                setRedirect(true);
             })
-            .catch(err => console.log(err.response));
+            .catch(err => handleAuthErr(err));
     };
 
     const logout = () => {
@@ -44,7 +53,9 @@ export const AuthProvider = ({ children }) => {
             ...userState,
             register,
             login,
-            logout
+            logout,
+            errMsg,
+            redirect,
         }}>
             {children}
         </AuthContext.Provider>
